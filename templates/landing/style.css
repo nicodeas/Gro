@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(52, 129, 103);
+}
+
+h2 {
+    color:rgb(4, 36, 22);
+    text-align:center;
+    vertical-align: text-bottom;
+}
+
+.row1 {
+    background-color: rgba(71, 139, 122, 0.733);
+    
+}
+
+.row2 {
+    background-color: rgb(90, 161, 134);
+}
+
+.row3 {
+    background-color: rgb(118, 199, 179);
+}
