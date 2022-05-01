@@ -8,15 +8,20 @@ h2 {
     vertical-align: text-bottom;
 }
 
-.row1 {
+.bar-1 {
     background-color: rgba(71, 139, 122, 0.733);
     
 }
 
-.row2 {
+.bar-2 {
     background-color: rgb(90, 161, 134);
 }
 
-.row3 {
+.bar-3 {
     background-color: rgb(118, 199, 179);
+}
+
+.container-fluid {
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
