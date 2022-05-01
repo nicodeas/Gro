@@ -1,5 +1,6 @@
-body {
-    background-color: rgb(52, 129, 103);
+.bar-0 {
+    background-color: rgb(155, 208, 233);
+    color:rgb(5, 17, 66);
 }
 
 h2 {
@@ -10,18 +11,50 @@ h2 {
 
 .bar-1 {
     background-color: rgba(71, 139, 122, 0.733);
-    
+    text-align: left;
 }
 
 .bar-2 {
     background-color: rgb(90, 161, 134);
+    text-align: right;
 }
 
 .bar-3 {
     background-color: rgb(118, 199, 179);
+    text-align: left;
+}
+
+.bar-4 {
+    background-color: #ffffff;
+    color: #555555;
 }
 
 .container-fluid {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+#hp-1 {
+    float: left;
+    margin: 0 15px 0 0
+}
+
+#hp-2 {
+    float: rght;
+    margin: 0 0 0 15px;
+}
+
+.button {
+    border: none;
+    color: #0e3d1a;
+    background-color: #ffffffc4;
+    text-align: center;
+}
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
