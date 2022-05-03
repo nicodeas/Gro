@@ -33,6 +33,9 @@ h2 {
     padding-top: 130px;
     padding-bottom: 130px;
     font-family: "Lucida Console", "Monaco", monospace;
+    padding-right: 30px;
+    padding-left: 30px;
+    display:flex;
 }
 
 #hp-1 {
