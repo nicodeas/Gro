@@ -30,8 +30,9 @@ h2 {
 }
 
 .container-fluid {
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding-top: 130px;
+    padding-bottom: 130px;
+    font-family: "Lucida Console", "Monaco", monospace;
 }
 
 #hp-1 {
@@ -47,8 +48,9 @@ h2 {
 .button {
     border: none;
     color: #0e3d1a;
-    background-color: #ffffffc4;
+    background-color: transparent;
     text-align: center;
+    cursor: pointer;
 }
 .center {
     margin: 0;
@@ -57,4 +59,9 @@ h2 {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+.img-center {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
 }
