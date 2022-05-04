@@ -8,7 +8,7 @@ h2 {
     background-color: rgb(155, 208, 233);
     color:rgb(5, 17, 66);
     text-align:center;
-    padding-top: 500px;
+    padding-top: 500px;    
 }
 
 .bar-1 {
@@ -37,7 +37,6 @@ h2 {
     font-family: "Lucida Console", "Monaco", monospace;
     padding-right: 30px;
     padding-left: 30px;
-    display:flex;
 }
 
 #hp-1 {
@@ -77,3 +76,7 @@ h2 {
     display:flex;
     background-color: transparent;
 }
+
+html {
+    scroll-behavior: smooth;
+  }
