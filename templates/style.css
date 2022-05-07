@@ -85,3 +85,7 @@ html {
     width:50px;
     height: 25px;
 }
+
+.background {
+    background-color: rgb(211, 232, 250);
+}
