@@ -2,7 +2,7 @@ from enum import unique
 from app import db
     
 class PlantState(db.Model):
-    state = db.Column(db.Integer, unique=True)
+    state = db.Column(db.Integer, primary_key=True)
     #filepath to associated plant image
     img = db.Column(db.String(128), index=True)
     flower = db.Column(db.Boolean)
