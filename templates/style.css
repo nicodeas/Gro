@@ -1,4 +1,5 @@
 :root {
+    --hero-text-font: "Fredoka One", monospace;
     --header-font:  "Comfortaa", "Lucida Console", "Monaco", monospace;
     --body-font: "Palanquin", serif;
 }
