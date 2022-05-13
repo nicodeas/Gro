@@ -1,3 +1,8 @@
+:root {
+    --header-font:  "Comfortaa", "Lucida Console", "Monaco", monospace;
+    --body-font: "Palanquin", serif;
+}
+
 h2 {
     color:rgb(4, 36, 22);
     text-align:center;
@@ -34,7 +39,7 @@ h2 {
 .container-fluid {
     padding-top: 130px;
     padding-bottom: 130px;
-    font-family: "Lucida Console", "Monaco", monospace;
+    font-family: var(--header-font);
     padding-right: 30px;
     padding-left: 30px;
 }
@@ -81,7 +86,14 @@ html {
     scroll-behavior: smooth;
   }
 
+.navbar-brand {
+    width:150px;
+    height:80px;
+}
+
 .logo {
-    width:50px;
-    height: 25px;
+    /* width:50px;
+    height: 25px; */
+    width:125px;
+    height:50px;
 }
