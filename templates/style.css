@@ -1,3 +1,8 @@
+/* possible new color pallete
+74cbf6
+8ddd62
+e5c997 */
+
 :root {
     --hero-text-font: "Fredoka One", monospace;
     --header-font:  "Comfortaa", "Lucida Console", "Monaco", monospace;
@@ -37,7 +42,7 @@ h2 {
     color: #555555;
 }
 
-.container-fluid {
+.bar {
     padding-top: 130px;
     padding-bottom: 130px;
     font-family: var(--header-font);
@@ -93,25 +98,46 @@ h2 {
     margin-right: auto;
 }
 
-.nav-head {
+/* .nav-head {
     padding-right: 30px;
     padding-left: 30px;
     display:flex;
     background-color: transparent;
-}
+} */
 
 html {
     scroll-behavior: smooth;
   }
 
+.navbar-default {
+    background-color: white !important;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #222222 !important;
+}
+
 .navbar-brand {
-    width:150px;
-    height:80px;
+    width:170px !important;
 }
 
 .logo {
-    /* width:50px;
-    height: 25px; */
     width:125px;
     height:50px;
+    margin-top: -15px;
+}
+
+#nav {
+    font-family: var(--header-font);
+    font-size: 16px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.navbar-btn {
+    border-color: #9bd0e9 !important;
+    border-radius: 2px !important;
+    background-color: #9bd0e9 !important;
+    cursor: pointer;
+    margin-left: 10px;
 }

@@ -15,20 +15,31 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="nav-navbar-default">
+        <nav class="nav navbar-default" role="navigation">
+        <!-- Mobile toggle behaviour based on https://getbootstrap.com/docs/3.3/components/#nav -->
+            <div class="container-fluid" id="nav">
                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
                     <a class="navbar-brand" href="#"><img class="logo" alt="Gro logo" src="../graphics/logos/colour-flowers-resize.PNG"></a>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Game</a></li>
-                        <li><a href="#">Tutorial</a></li>
-                        <li><a href="#">Account</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in">Log In</span></a></li>
-                    </ul>
                 </div>
+                <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Game</a></li>
+                    <li><a href="#">Tutorial</a></li>
+                    <li><a href="#">Account</a></li>
+                    <button type="button" class="btn btn-default navbar-btn" onclick="window.location.href='#';">Sign Up/Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
+                </ul>
+                </div>
+            </div>
         </nav>
 
-        <div class="bar-0 container-fluid">
+        <div class="bar bar-0 container-fluid">
             <img src="../graphics/logos/solidwhite.PNG" alt="white logo" width="200" height="80" class="img-center">
             <h2>Welcome to GRO landing page</h2>
             <div class="button center">
@@ -36,25 +47,25 @@
                 <button type="button" class="feature-button" onclick="window.location.href='#important-section';">Join Us!</button>
             </div>
         </div>
-         <div class="bar-1 container-fluid"> 
+         <div class="bar bar-1 container-fluid"> 
             <h3>
                 You take care of your plant by taking care of yourself 
                 <img src="../images/leaf1-face0.PNG" alt="sleepy face" width="150" height="300">
             </h3>
         </div>
-        <div class="bar-2 container-fluid">
+        <div class="bar bar-2 container-fluid">
             <h3>
                 <img src="../images/leaf2-face4.PNG" alt="happy face" width="'150" height="300">
                 To keep the plant happy, you need to perform breathing exercises, write what are you grateful for, and do a body scan meditation 
             </h3>
         </div>
-        <div class="bar-3 container-fluid">
+        <div class="bar bar-3 container-fluid">
             <h3>
                 If you forget to take care of the plant and yourself, the plant becomes sad, and it loses its leafs
                 <img src="../images/leafb-face1.PNG" alt="sad face" width="150" height="300">
             </h3>
         </div>
-        <div class="bar-4 container-fluid" id="important-section">
+        <div class="bar bar-4 container-fluid" id="important-section">
             <h3>
                 Important information
             </h3>
