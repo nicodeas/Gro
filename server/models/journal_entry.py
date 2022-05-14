@@ -6,3 +6,4 @@ class JournalEntry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     entry = db.Column(db.String(255))
     date_created = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
