@@ -7,19 +7,31 @@ e5c997 */
     --hero-text-font: "Fredoka One", monospace;
     --header-font:  "Comfortaa", "Lucida Console", "Monaco", monospace;
     --body-font: "Palanquin", serif;
+    --colour-1: #74cbf6;
+    --colour-1-light: #a0dfff;
+    --colour-2: #8ddd62;
+    --colour-3: #e5c997;
+    --colour-4: #cdcdcd;
+    --text-colour: #222222;
+    /* previous palette */
+    --colour-1a: #9bd0e9;
+
+    --text-colour-1: #042416;
+    --text-colour-2: #051142;
+    --text-colour-3: #555555;
 }
 
 h2 {
-    color:rgb(4, 36, 22);
+    color:var(--text-colour-1);
     text-align:center;
     vertical-align: text-bottom;
 }
 
 .bar-0 {
-    background-color: #9bd0e9;
-    color:rgb(5, 17, 66);
+    background-color: var(--colour-1-light);
+    color:var(--text-colour-2);
     text-align:center;
-    padding-top: 500px;
+    padding-top: 30px !important;
 }
 
 .bar-1 {
@@ -39,12 +51,12 @@ h2 {
 
 .bar-4 {
     background-color: #ffffff;
-    color: #555555;
+    color: var(--text-colour-3);
 }
 
 .bar {
-    padding-top: 130px;
-    padding-bottom: 130px;
+    padding-top: 90px;
+    padding-bottom: 90px;
     font-family: var(--header-font);
     padding-right: 30px;
     padding-left: 30px;
@@ -85,7 +97,7 @@ h2 {
 
 .center {
     margin: 0;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
@@ -96,14 +108,9 @@ h2 {
     display:block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 30px;
+    margin-top:30px;
 }
-
-/* .nav-head {
-    padding-right: 30px;
-    padding-left: 30px;
-    display:flex;
-    background-color: transparent;
-} */
 
 html {
     scroll-behavior: smooth;
@@ -135,9 +142,26 @@ html {
 }
 
 .navbar-btn {
-    border-color: #9bd0e9 !important;
+    border-color: var(--colour-1-light) !important;
     border-radius: 2px !important;
-    background-color: #9bd0e9 !important;
+    background-color: var(--colour-1-light) !important;
     cursor: pointer;
     margin-left: 10px;
+}
+
+#centre-box {
+    display: flex;
+    flex: 1;
+    background-color: white !important;
+    padding-top: 2em;
+    padding-bottom: 2.5em;
+    border-radius: 12px;
+    flex-direction: column;
+    padding-left: 1em;
+    padding-right: 1em;
+    /* box-shadow: 4px 4px 0 0px var(--colour-4); */
+}
+
+.spacer {
+    height: 1em;
 }

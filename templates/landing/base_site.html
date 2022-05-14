@@ -40,14 +40,26 @@
         </nav>
 
         <div class="bar bar-0 container-fluid">
-            <img src="../graphics/logos/solidwhite.PNG" alt="white logo" width="200" height="80" class="img-center">
-            <h2>Welcome to GRO landing page</h2>
-            <div class="button center">
-                <!-- button onclick attr from https://www.w3docs.com/snippets/html/how-to-create-an-html-button-that-acts-like-a-link.html -->
-                <button type="button" class="feature-button" onclick="window.location.href='#important-section';">Join Us!</button>
+            <div class="row">
+                <div class = "col-xs-1 col-sm-2 col-md-3 col-lg-3 col-xl-3"></div>
+                <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+                    <img src="../graphics/logos/solidwhite.PNG" alt="white logo" width="400" height="160" class="img-responsive img-center">
+                    <div id="centre-box">
+                            <h2> Build healthy habits with Gro, your friendly self-care guide.</h2>
+                            <div class="spacer"></div>
+                            <div class="button">
+                                <!-- button onclick attr from https://www.w3docs.com/snippets/html/how-to-create-an-html-button-that-acts-like-a-link.html -->
+                                <button type="button" class="feature-button" onclick="window.location.href='#important-section';">Get Started!</button>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="h5">Or learn more below.</div>
+                            <div class="glyphicon glyphicon-menu-down"></div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-8 col-md-3 col-lg-3 col-xl-3"></div>
             </div>
         </div>
-         <div class="bar bar-1 container-fluid"> 
+         <div class="bar bar-1 container-fluid" id="info-start"> 
             <h3>
                 You take care of your plant by taking care of yourself 
                 <img src="../images/leaf1-face0.PNG" alt="sleepy face" width="150" height="300">
