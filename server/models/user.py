@@ -21,8 +21,8 @@ class User(db.Model):
     activity_one_complete = db.Column(db.Boolean, default=False)
     activity_two_complete = db.Column(db.Boolean, default=False)
 
-    date_created = db.Column(db.DateTime, default=datetime.utcnow())
-    last_session = db.Column(db.DateTime, default=datetime.utcnow())
+    date_created = db.Column(db.DateTime, default=datetime.now())
+    last_session = db.Column(db.DateTime, default=datetime.now())
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
