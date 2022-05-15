@@ -19,14 +19,14 @@ class User(db.Model):
 
     mood_recorded = db.Column(db.Boolean, default=False)
     journal_recorded = db.Column(db.Boolean, default=False)
-    breathing_completed = db.Column(db.Boolean, default=False)
+    breathing_complete = db.Column(db.Boolean, default=False)
     meditation_complete = db.Column(db.Boolean, default=False)
 
     date_created = db.Column(db.DateTime, default=datetime.now())
     last_session = db.Column(db.DateTime, default=datetime.now())
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return f'<User {self.username}>'
 
     def get_dict(self):
         return {
@@ -40,6 +40,6 @@ class User(db.Model):
             'pot_state': self.pot_state,
             'mood_recorded': self.mood_recorded,
             'journal_recorded': self.journal_recorded,
-            'breating_complete': self.breathing_completed,
+            'breathing_complete': self.breathing_complete,
             'meditation_complete': self.meditation_complete
         }
