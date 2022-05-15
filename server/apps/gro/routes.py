@@ -1,3 +1,4 @@
+from sqlalchemy import desc
 from server.models import User, db
 from flask import Blueprint, request
 from .controllers.gamestate import GameController
@@ -12,6 +13,29 @@ def create_user():
     db.session.add(user)
     db.session.commit()
     return {}
+
+
+@user_blueprint.route('/', methods=["GET"])
+def retrieve_users():
+    user_list = User.query.all()
+    users = {}
+    for user in user_list:
+        users[user.id] = user.get_dict()
+    print(users)
+    return users
+
+
+@user_blueprint.route('/leaderboard')
+def get_leaderboard():
+    user_list = User.query.order_by(desc(User.user_rating))
+    leaderboard = {}
+    position = 0
+
+    for user in user_list:
+        position += 1
+        leaderboard[position] = user.get_username()
+    print(leaderboard)
+    return leaderboard
 
 
 @user_blueprint.route('/<int:user_id>', methods=["GET"])

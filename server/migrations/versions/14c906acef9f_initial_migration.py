@@ -1,8 +1,8 @@
 """initial migration
 
-Revision ID: 3215278798f0
+Revision ID: 14c906acef9f
 Revises: 
-Create Date: 2022-05-12 22:55:26.009841
+Create Date: 2022-05-15 11:04:13.295452
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3215278798f0'
+revision = '14c906acef9f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,18 +21,17 @@ def upgrade():
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=64), nullable=False),
-    sa.Column('date_created', sa.DateTime(), nullable=True),
-    sa.Column('last_session', sa.DateTime(), nullable=True),
-    sa.Column('user_rating', sa.Integer(), nullable=True),
     sa.Column('plant_state', sa.Integer(), nullable=True),
     sa.Column('pot_state', sa.Integer(), nullable=True),
+    sa.Column('user_rating', sa.Integer(), nullable=True),
     sa.Column('mood_recorded', sa.Boolean(), nullable=True),
     sa.Column('journal_recorded', sa.Boolean(), nullable=True),
-    sa.Column('activity_one_complete', sa.Boolean(), nullable=True),
-    sa.Column('activity_two_complete', sa.Boolean(), nullable=True),
+    sa.Column('breathing_completed', sa.Boolean(), nullable=True),
+    sa.Column('meditation_complete', sa.Boolean(), nullable=True),
+    sa.Column('date_created', sa.DateTime(), nullable=True),
+    sa.Column('last_session', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_user_user_rating'), 'user', ['user_rating'], unique=False)
     op.create_index(op.f('ix_user_username'), 'user', ['username'], unique=True)
     op.create_table('journal_entry',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -62,6 +61,5 @@ def downgrade():
     op.drop_index(op.f('ix_journal_entry_date_created'), table_name='journal_entry')
     op.drop_table('journal_entry')
     op.drop_index(op.f('ix_user_username'), table_name='user')
-    op.drop_index(op.f('ix_user_user_rating'), table_name='user')
     op.drop_table('user')
     # ### end Alembic commands ###

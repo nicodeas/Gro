@@ -1,5 +1,6 @@
 from datetime import datetime
 from .db import db
+from .moods import Mood
 
 
 class User(db.Model):
@@ -18,8 +19,8 @@ class User(db.Model):
 
     mood_recorded = db.Column(db.Boolean, default=False)
     journal_recorded = db.Column(db.Boolean, default=False)
-    activity_one_complete = db.Column(db.Boolean, default=False)
-    activity_two_complete = db.Column(db.Boolean, default=False)
+    breathing_completed = db.Column(db.Boolean, default=False)
+    meditation_complete = db.Column(db.Boolean, default=False)
 
     date_created = db.Column(db.DateTime, default=datetime.now())
     last_session = db.Column(db.DateTime, default=datetime.now())
@@ -39,6 +40,6 @@ class User(db.Model):
             'pot_state': self.pot_state,
             'mood_recorded': self.mood_recorded,
             'journal_recorded': self.journal_recorded,
-            'activity_one_complete': self.activity_one_complete,
-            'activity_two_complete': self.activity_two_complete
+            'breating_complete': self.breathing_completed,
+            'meditation_complete': self.meditation_complete
         }
