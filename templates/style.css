@@ -85,3 +85,16 @@ html {
     width:50px;
     height: 25px;
 }
+
+.background {
+    background-color: rgb(211, 232, 250);
+}
+
+.center-up {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
