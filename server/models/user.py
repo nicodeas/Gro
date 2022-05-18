@@ -45,8 +45,7 @@ class User(UserMixin, db.Model):
             'journal_recorded': self.journal_recorded,
             'breathing_complete': self.breathing_complete,
             'meditation_complete': self.meditation_complete
-        }
-    
+        }    
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
