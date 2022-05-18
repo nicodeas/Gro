@@ -1,7 +1,7 @@
 from datetime import datetime
 from .db import db
 from .moods import Mood
-from werkzeug import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from server import login
 
