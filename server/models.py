@@ -1,10 +1,7 @@
+from server import db, login
 from datetime import datetime
-from .db import db
-from .moods import Mood
-from werkzeug import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from server import login
-
+from werkzeug.security import generate_password_hash,check_password_hash
 
 class User(UserMixin, db.Model):
 
@@ -53,6 +50,63 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)        
     
-    @login.user_loader
-    def load_user(id):
-        return User.query.get(int(id))
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+    
+    
+class JournalPrompt(db.Model):
+
+    __tablename__ = 'journalprompt'
+
+    id = db.Column(db.Integer, primary_key=True)
+    prompt = db.Column(db.String(255))
+    journals = db.relationship('JournalEntry', backref='journalprompt')
+
+    def __repr__(self):
+        return f'<JournalPrompt {self.prompt}>'
+
+    def get_dict(self):
+        return{
+            'prompt': self.prompt
+        }
+
+
+class JournalEntry(db.Model):
+
+    __tablename__ = 'journalentry'
+
+    id = db.Column(db.Integer, primary_key=True)
+    entry = db.Column(db.String(255))
+    date_created = db.Column(db.DateTime, index=True, default=datetime.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    journal_prompt_id = db.Column(
+        db.Integer, db.ForeignKey('journalprompt.id'))
+
+    def __repr__(self):
+        return f'<Journal entry for {self.user.username}>'
+
+    def get_dict(self):
+        return{
+            'entry': self.entry,
+            'date_created': self.date_created,
+            'user': self.user.username,
+            'journal_prompt': self.journalprompt.prompt if self.journalprompt else ""
+        }
+
+class Mood(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    mood = db.Column(db.Integer, default=0)
+    date_created = db.Column(db.DateTime, index=True, default=datetime.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f'<Mood for {self.user.username}>'
+
+    def get_dict(self):
+        return {
+            'mood': self.mood,
+            'user': self.user.username,
+            'date_created': self.date_created
+        }
