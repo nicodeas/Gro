@@ -4,7 +4,7 @@
         <title>
             GRO
         </title>
-            <link rel="stylesheet" type="text/css" href="../style.css">
+            <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/style.css')}}">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -13,7 +13,7 @@
     <body>
         <nav class="nav-navbar-default">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><img class="logo" src="../graphics/logos/colour-flowers.PNG"></a>
+                    <a class="navbar-brand" href="#"><img class="logo" src="{{url_for('static',filename='graphics/logos/colour-flowers.PNG')}}"></a>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">Game</a></li>
@@ -25,7 +25,7 @@
         </nav>
 
         <div class="bar-0 container-fluid">
-            <img src="../graphics/logos/solidwhite.PNG" alt="white logo" width="150" height="50" class="img-center">
+            <img src="{{url_for('static',filename='graphics/logos/solidwhite.PNG')}}" alt="white logo" width="150" height="50" class="img-center">
             <h2>Welcome to GRO landing page</h2>
             <div class="button center">
                 <button type="button"><a href="#important-section">Join Us!</a></button>
@@ -34,19 +34,19 @@
          <div class="bar-1 container-fluid"> 
             <h3>
                 You take care of your plant by taking care of yourself 
-                <img src="../images/leaf1-face0.PNG" alt="sleepy face" width="150" height="300">
+                <img src="{{url_for('static',filename='images/leaf1-face0.PNG')}}" alt="sleepy face" width="150" height="300">
             </h3>
         </div>
         <div class="bar-2 container-fluid">
             <h3>
-                <img src="../images/leaf2-face4.PNG" alt="happy face" width="'150" height="300">
+                <img src="{{url_for('static',filename='images/leaf2-face4.PNG')}}" alt="happy face" width="'150" height="300">
                 To keep the plant happy, you need to perform breathing exercises, write what are you grateful for, and do a body scan meditation 
             </h3>
         </div>
         <div class="bar-3 container-fluid">
             <h3>
                 If you forget to take care of the plant and yourself, the plant becomes sad, and it loses its leafs
-                <img src="../images/leafb-face1.PNG" alt="sad face" width="150" height="300">
+                <img src="{{url_for('static',filename='images/leafb-face1.PNG')}}" alt="sad face" width="150" height="300">
             </h3>
         </div>
         <div class="bar-4 container-fluid" id="important-section">
