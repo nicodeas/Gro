@@ -3,6 +3,7 @@ from flask_migrate import Migrate
 from .config import Config
 from .models import db
 from .apps.test_server.routes import test_bp
+from flask_login import LoginManager
 from .apps.gro.routes import user_blueprint
 
 
@@ -20,3 +21,5 @@ def create_app(config=Config):
     migrate = Migrate(app, db)
     register_bp(app)
     return app
+
+login = LoginManager(app)

@@ -1,13 +1,17 @@
 from datetime import datetime
 from .db import db
 from .moods import Mood
+from werkzeug import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from server import login
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True,
                          unique=True, nullable=False)
+    password_hash = db.Column(db.String(128))
 
     moods = db.relationship('Mood', backref="user")
     journals = db.relationship("JournalEntry", backref="user")
@@ -42,4 +46,13 @@ class User(db.Model):
             'journal_recorded': self.journal_recorded,
             'breathing_complete': self.breathing_complete,
             'meditation_complete': self.meditation_complete
-        }
+        }    
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)        
+    
+    @login.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
