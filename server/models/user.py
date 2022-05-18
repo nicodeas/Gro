@@ -11,6 +11,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True,
                          unique=True, nullable=False)
+    password_hash = db.Column(db.String(128))
 
     moods = db.relationship('Mood', backref="user")
     journals = db.relationship("JournalEntry", backref="user")
