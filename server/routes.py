@@ -61,7 +61,8 @@ def signup_user_post():
     new_user=User(first_name=first_name,last_name=last_name,username=username, password_hash=generate_password_hash(password,method='sha256'))
     db.session.add(new_user)
     db.session.commit()
-    return redirect(url_for('user_login'))
+    login_user(new_user)
+    return redirect(url_for('index'))
 
 @app.route('/logout')
 @login_required
