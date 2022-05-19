@@ -1,12 +1,15 @@
+from datetime import datetime
 from server import app,db
-from flask import flash, redirect, render_template, request, url_for
-from .models import User, JournalPrompt
+from flask import flash, redirect, render_template, request, url_for,session
+from .models import User, JournalPrompt,JournalEntry
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
+import random
 
 @app.route('/')
 @app.route('/index')
 def index():
+    print(session)
     return render_template('landing/base_site.html')
 
 @app.route('/game')
@@ -91,3 +94,23 @@ def create_journal_prompt():
         db.session.add(new_journal_prompt)
         db.session.commit()
         return redirect(url_for('admin'))
+    
+@app.route('/journal')
+@login_required
+def journal():
+    prompt = random.choice(JournalPrompt.query.all())
+    session['prompt_id']=prompt.id
+    return render_template('game/journal.html',prompt=prompt.prompt)
+
+@app.route('/journal',methods=["POST"])
+@login_required
+def post_journal():
+    user_id = current_user.id
+    prompt_id= session.get("prompt_id")
+    entry = request.form.get('journal-entry')
+    journal_entry = JournalEntry(user_id= user_id,entry=entry,journal_prompt_id=prompt_id)
+    current_user.journal_recorded=True
+    current_user.last_session = datetime.now()
+    db.session.add(journal_entry)
+    db.session.commit()
+    return redirect(url_for('journal'))
