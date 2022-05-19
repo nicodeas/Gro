@@ -9,18 +9,12 @@ import random
 @app.route('/')
 @app.route('/index')
 def index():
-    print(session)
     return render_template('landing/base_site.html')
 
 @app.route('/game')
 @login_required
 def load_game():
     return render_template('game/game_page.html')
-
-@app.route('/register',methods=["POST","GET"])
-def register_user():
-    
-    return render_template('user/signup.html')
 
 @app.route('/login')
 def user_login():
@@ -96,8 +90,9 @@ def create_journal_prompt():
         return redirect(url_for('admin'))
     
 @app.route('/journal')
-@login_required
 def journal():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
     prompt = random.choice(JournalPrompt.query.all())
     session['prompt_id']=prompt.id
     return render_template('game/journal.html',prompt=prompt.prompt)
@@ -108,6 +103,9 @@ def post_journal():
     user_id = current_user.id
     prompt_id= session.get("prompt_id")
     entry = request.form.get('journal-entry')
+    # do not post empty entries to db
+    if not entry:
+        return redirect(url_for('journal'))
     journal_entry = JournalEntry(user_id= user_id,entry=entry,journal_prompt_id=prompt_id)
     current_user.journal_recorded=True
     current_user.last_session = datetime.now()
