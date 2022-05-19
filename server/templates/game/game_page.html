@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            GRO Game
-        </title>
-        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/style.css')}}">
-
-    </head>
+{% extends 'base.html' %}
+{% block content %}
     <body class="background">
         <img class="img-center center" src="{{url_for('static',filename='images/potb.PNG')}}" alt="0-phase" width="300" height="450">
     </body>
-</html>
+{% endblock %}
