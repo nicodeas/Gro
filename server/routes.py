@@ -1,6 +1,6 @@
 from server import app,db
 from flask import flash, redirect, render_template, request, url_for
-from .models import User
+from .models import User, JournalPrompt
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -21,6 +21,8 @@ def register_user():
 
 @app.route('/login')
 def user_login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     return render_template('user/login.html')
     
 
@@ -38,6 +40,8 @@ def user_login_post():
 
 @app.route('/signup')
 def signup_user():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     return render_template('user/signup.html')
 
 @app.route('/signup', methods=["POST"])
@@ -50,6 +54,13 @@ def signup_user_post():
     if user:
         flash('User already exists.')
         return redirect(url_for('signup_user'))
+    
+    from .utils import validate_password
+    
+    if not validate_password(password):
+        flash('Please enter a stronger password')
+        return redirect(url_for('signup_user'))
+    
     new_user=User(first_name=first_name,last_name=last_name,username=username, password_hash=generate_password_hash(password,method='sha256'))
     db.session.add(new_user)
     db.session.commit()
@@ -60,3 +71,21 @@ def signup_user_post():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/admin')
+def admin():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+    return render_template('admin/admin.html')
+
+@app.route('/create-journal-prompt', methods=["POST"])
+@login_required
+def create_journal_prompt():
+    if current_user.username != 'admin':
+        return redirect(url_for('index'))
+    else:
+        prompt = request.form.get('journal-prompt')
+        new_journal_prompt = JournalPrompt(prompt = prompt)
+        db.session.add(new_journal_prompt)
+        db.session.commit()
+        return redirect(url_for('admin'))
