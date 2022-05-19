@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="/create-journal-prompt">
+
+    <div class="mb-4 field">
+        <input type="text" name="journal-prompt" class="form-control" id="password-input" placeholder="Enter new journal prompt">
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-primary">Submit journal prompt</button>
+    </div>
+</form>
+{% endblock %}

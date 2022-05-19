@@ -24,6 +24,9 @@
                         {% if  current_user.is_authenticated %}
                         <li><a href="#">Account</a></li>
                         <li><a href="{{url_for('load_game')}}">Game</a></li>
+                        {% if  current_user.username=='admin' %}
+                        <li><a href="{{url_for('admin')}}">Admin</a></li>
+                        {% endif %}
                         <li><a href="{{url_for('logout')}}">Log Out</span></a></li>
                         {% endif %}
 
