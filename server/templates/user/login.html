@@ -16,7 +16,7 @@
   <div class="container-md col-sm-4 information-card">
     <div class="col-10">
         <div class="mb-4 mt-4">
-            <img src="{{url_for('static', filename='graphics/logos/solidwhite.PNG')}}" alt="white logo" class="mx-auto d-block logo">
+          <a href="{{url_for('index')}}"> <img src="{{url_for('static', filename='graphics/logos/solidwhite.PNG')}}" alt="white logo" class="mx-auto d-block logo"></a>
         </div>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
