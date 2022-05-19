@@ -85,6 +85,8 @@ def create_journal_prompt():
         return redirect(url_for('index'))
     else:
         prompt = request.form.get('journal-prompt')
+        if not prompt:
+            return redirect(url_for('admin'))
         new_journal_prompt = JournalPrompt(prompt = prompt)
         db.session.add(new_journal_prompt)
         db.session.commit()
