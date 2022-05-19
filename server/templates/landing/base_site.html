@@ -16,11 +16,17 @@
                     <a class="navbar-brand" href="#"><img class="logo" src="{{url_for('static',filename='graphics/logos/colour-flowers.PNG')}}"></a>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
-                        <li><a href="{{url_for('load_game')}}">Game</a></li>
                         <li><a href="#">Tutorial</a></li>
+                        {% if not current_user.is_authenticated %}
+                        <li><a href="{{url_for('user_login')}}">Log In</span></a></li>
+                        <li><a href="{{url_for('signup_user')}}">Register</span></a></li>
+                        {% endif %}
+                        {% if  current_user.is_authenticated %}
                         <li><a href="#">Account</a></li>
-                        <li><a href="{{url_for('login_user')}}">Log In</span></a></li>
-                        <li><a href="{{url_for('register_user')}}">Register</span></a></li>
+                        <li><a href="{{url_for('load_game')}}">Game</a></li>
+                        <li><a href="{{url_for('logout')}}">Log Out</span></a></li>
+                        {% endif %}
+
                     </ul>
                 </div>
         </nav>

@@ -6,10 +6,15 @@ from werkzeug.security import generate_password_hash,check_password_hash
 class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    
+    first_name = db.Column(db.String(64),default='guest_user_first_name')
+    last_name = db.Column(db.String(64),default='guest_user_last_name')
+    
     username = db.Column(db.String(64), index=True,
                          unique=True, nullable=False)
-    password_hash = db.Column(db.String(128),nullable=False)
-
+    
+    password_hash = db.Column(db.String(256),nullable=False)
+    
     moods = db.relationship('Mood', backref="user")
     journals = db.relationship("JournalEntry", backref="user")
 
@@ -50,9 +55,6 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)        
     
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
     
     
 class JournalPrompt(db.Model):
