@@ -19,6 +19,13 @@
             <div class="mb-4 mt-4">
                 <img src="{{url_for('static', filename='graphics/logos/solidwhite.PNG')}}" alt="white logo" class="mx-auto d-block logo">
             </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="mb-4 mt-4 error-message bg-danger">
+            {{ messages[0] }} <a href="{{url_for('user_login')}}">Login</a> instead
+            </div>
+            {% endif %}
+            {% endwith %}
             <form method="POST" action="/signup">
                 <div class="mb-4 name-box field" style="justify-content:space-between ;">
                     <input type="text" class="form-control name-field" name="first-name" id="first-name-input" placeholder="First name">

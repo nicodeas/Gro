@@ -29,3 +29,8 @@ body {
 .name-fields {
     width: 49%;
 }
+
+.error-message{
+    border-radius: 5px;
+    text-align: center;
+}

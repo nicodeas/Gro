@@ -18,6 +18,13 @@
         <div class="mb-4 mt-4">
             <img src="{{url_for('static', filename='graphics/logos/solidwhite.PNG')}}" alt="white logo" class="mx-auto d-block logo">
         </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="mb-4 mt-4 error-message bg-danger">
+         {{ messages[0] }}</a>
+        </div>
+        {% endif %}
+        {% endwith %}
         <form method="POST" action="/login">
         <div class="mb-4 field">
             <input type="username" name="username" class="form-control" id="username-input" placeholder="Username">
