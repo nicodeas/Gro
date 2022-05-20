@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div class="bar-0 container-fluid">
+            <img src="{{url_for('static',filename='graphics/logos/solidwhite.PNG')}}" alt="white logo" width="150" height="50" class="img-center">
+            <h2>Welcome to GRO landing page</h2>
+            <div class="button center">
+                <button type="button"><a href="#important-section">Join Us!</a></button>
+            </div>
+        </div>
+         <div class="bar-1 container-fluid"> 
+            <h3>
+                You take care of your plant by taking care of yourself 
+                <img src="{{url_for('static',filename='images/leaf1-face0.PNG')}}" alt="sleepy face" width="150" height="300">
+            </h3>
+        </div>
+        <div class="bar-2 container-fluid">
+            <h3>
+                <img src="{{url_for('static',filename='images/leaf2-face4.PNG')}}" alt="happy face" width="'150" height="300">
+                To keep the plant happy, you need to perform breathing exercises, write what are you grateful for, and do a body scan meditation 
+            </h3>
+        </div>
+        <div class="bar-3 container-fluid">
+            <h3>
+                If you forget to take care of the plant and yourself, the plant becomes sad, and it loses its leafs
+                <img src="{{url_for('static',filename='images/leafb-face1.PNG')}}" alt="sad face" width="150" height="300">
+            </h3>
+        </div>
+        <div class="bar-4 container-fluid" id="important-section">
+            <h3>
+                Important information
+            </h3>
+        </div>
+    </body>
+{% endblock %}
