@@ -32,7 +32,7 @@ h2 {
 
 .button {
     border: none;
-    color: #0e3d1a;
+    color: var(--text-colour);
     background-color: transparent;
     text-align: center;
     cursor: pointer;
@@ -43,7 +43,7 @@ h2 {
     padding: 15px;
     border-radius: 12px;
     font-family: var(--feature-font);
-    text-shadow: 1px 1px 2px #222222;
+    text-shadow: 1px 1px 2px var(--colour-neutral-dark);
     font-size: 28px;
     background-color: var(--colour-accent-1-dark);
     color: white;
@@ -52,8 +52,8 @@ h2 {
 
 .feature-button:hover {
     background-color: var(--colour-neutral);
-    box-shadow: 1px 1px 1px #222222 inset;
-    text-shadow: 1px 1px 2px #222222 inset !important;
+    box-shadow: 1px 1px 1px var(--colour-neutral-dark) inset;
+    text-shadow: 1px 1px 2px var(--colour-neutral-dark) inset !important;
 }
 
 
@@ -123,41 +123,44 @@ h2 {
     margin: 0 0 0 15px;
 } */
 
-#centre-box {
+.box {
     display: flex;
     flex: 1;
-    background-color: white !important;
     padding-top: 2em;
     padding-bottom: 2.5em;
     border-radius: 12px;
-    flex-direction: column;
     padding-left: 1em;
     padding-right: 1em;
+}
+
+.box-centre {
+    background-color: white !important;
+    flex-direction: column;
     /* box-shadow: 4px 4px 0 0px var(--colour-neutral); */
 }
 
 .box-left {
-    background-color: var(--colour-accent-1);
     margin-top: auto;
     margin-bottom: auto;
-    padding-top: 2em;
-    padding-bottom: 2.5em;
-    border-radius: 12px;
-    padding-left: 1em;
-    padding-right: 1em;
     /* box-shadow: 4px 4px 0 0px var(--colour-neutral); */
 }
 
-.box-1 {
-    background-color: var(--colour-accent-1);
+.box-right {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
-.bar-3 > .box-left {
+#box-1 {
+    background-color: var(--colour-accent-1);   
+}
+
+#box-2 {
+    background-color: white;
+    margin-top: 45px;
+}
+
+#box-3 {
     background-color: var(--colour-accent-2) !important;
-}
-
-.box {
-    /* TODO: modularize box css */
 }
 
 .bar-header {
@@ -169,14 +172,13 @@ h2 {
 /* TODO: odd and even bar formatting */
 
 .bar-1 {
-    /* background-color: rgba(71, 139, 122, 0.733); */
     background-color: white;
     text-align: left;
 }
 
 .bar-2 {
-    background-color: var(--colour-accent-2);
-    text-align: right;
+    background-color: var(--colour-primary);
+    text-align: left;
 }
 
 .bar-3 {
@@ -185,7 +187,7 @@ h2 {
 }
 
 .bar-4 {
-    background-color: #ffffff;
+    background-color: var(--colour-neutral);
     color: var(--text-colour);
 }
 
