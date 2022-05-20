@@ -1,7 +1,8 @@
 from datetime import datetime
 from server import app,db
 from flask import flash, redirect, render_template, request, url_for,session
-from .models import User, JournalPrompt,JournalEntry
+from .models import User, JournalPrompt,JournalEntry,Mood
+from .controllers import GameController
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
@@ -32,6 +33,7 @@ def user_login_post():
         flash('Please check login details')
         return redirect(url_for('user_login'))
     login_user(user)
+    GameController.update_user()
     return redirect(url_for('index'))
 
 
@@ -108,8 +110,21 @@ def post_journal():
     if not entry:
         return redirect(url_for('journal'))
     journal_entry = JournalEntry(user_id= user_id,entry=entry,journal_prompt_id=prompt_id)
-    current_user.journal_recorded=True
-    current_user.last_session = datetime.now()
     db.session.add(journal_entry)
     db.session.commit()
+    GameController.update_journal_recorded()
     return redirect(url_for('journal'))
+
+@app.route('/mood',methods=['POST'])
+@login_required
+def post_mood():
+    mood = request.form.get("mood")
+    new_mood = Mood(mood=mood,user_id=current_user.id)
+    db.session.add(new_mood)
+    db.session.commit()
+    GameController.update_mood_recorded()
+    return redirect(url_for('index'))
+
+@app.route('/user-gamestate')
+def get_game_state():
+    return current_user.get_dict()
