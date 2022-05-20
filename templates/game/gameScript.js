@@ -39,7 +39,6 @@ function loadListen(arr, ctx) {
         "load",
         function () {
           loaded += 1;
-          console.log(loaded);
         },
         false
       );
@@ -61,7 +60,6 @@ function loadListen(arr, ctx) {
       drawArray(arr, ctx);
       return true;
     } else {
-      console.log("loading, loaded=", loaded);
     }
   }
 
@@ -71,7 +69,6 @@ function loadListen(arr, ctx) {
 function drawArray(arr, ctx) {
   ctx.clearRect(0, 0, 840, 1270);
   for (i of arr) {
-    //console.log(i);
     if((i == 0)){continue;}
     else {ctx.drawImage(i, 0, 0);}
   }
@@ -80,7 +77,7 @@ function drawArray(arr, ctx) {
 function changeImage(arr, i, newsrc, ctx) {
   var img = new Image();
   arr[i] = img;
-  img.addEventListener("load", function() {console.log("new img", img); drawArray(arr, ctx); console.log("we tried to draw");}, false);
+  img.addEventListener("load", function() {drawArray(arr, ctx);}, false);
   img.src = newsrc;
 }
 
