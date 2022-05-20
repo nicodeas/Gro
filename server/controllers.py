@@ -22,6 +22,8 @@ class GameController():
         else:
             # plant shrinks
             current_user.plant_state-=num_days_diff
+            if current_user.plant_state< 0:
+                current_user.plant_state = 0
             # set pot to upset
             current_user.pot_state=-1
             

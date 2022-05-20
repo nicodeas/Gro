@@ -18,8 +18,8 @@ class User(UserMixin, db.Model):
     moods = db.relationship('Mood', backref="user")
     journals = db.relationship("JournalEntry", backref="user")
 
-    plant_state = db.Column(db.Integer, default=-1)
-    pot_state = db.Column(db.Integer, default=-1)
+    plant_state = db.Column(db.Integer, default=0)
+    pot_state = db.Column(db.Integer, default=0)
 
     user_rating = db.Column(db.Integer, default=0)
 
@@ -57,7 +57,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
     
     def is_prunable(self):
-        return self.plant_state==30        
+        return self.plant_state==21        
     
     
   
