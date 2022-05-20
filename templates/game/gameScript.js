@@ -88,3 +88,4 @@ function removeImage(arr, i, ctx) {
   arr[i] = 0;
   drawArray(arr, ctx);
 }
+
