@@ -62,6 +62,12 @@ class GameController():
             current_user.pot_state+=1
         current_user.last_session = datetime.now()
         db.session.commit()
+        
+    def prune():
+        if current_user.get_dict()['is_prunable']:
+            current_user.plant_state=-1
+            current_user.user_rating+=1
+            db.session.commit()
             
     
 

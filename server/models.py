@@ -47,16 +47,20 @@ class User(UserMixin, db.Model):
             'mood_recorded': self.mood_recorded,
             'journal_recorded': self.journal_recorded,
             'breathing_complete': self.breathing_complete,
-            'meditation_complete': self.meditation_complete
+            'meditation_complete': self.meditation_complete,
+            'is_prunable': self.is_prunable()
         }    
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.password_hash, password)        
+        return check_password_hash(self.password_hash, password)
+    
+    def is_prunable(self):
+        return self.plant_state==30        
     
     
-    
+  
 class JournalPrompt(db.Model):
 
     __tablename__ = 'journalprompt'
