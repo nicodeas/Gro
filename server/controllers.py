@@ -1,6 +1,5 @@
 from datetime import datetime
-from server import app,db
-from .models import User, JournalPrompt,JournalEntry
+from server import db
 from flask_login import current_user
 
 class GameController():
