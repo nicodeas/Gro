@@ -1,75 +1,33 @@
-/* possible new color pallete
-74cbf6
-8ddd62
-e5c997 */
-
 :root {
-    --hero-text-font: "Fredoka One", monospace;
+    --feature-font: "Fredoka One", monospace;
     --header-font:  "Comfortaa", "Lucida Console", "Monaco", monospace;
     --body-font: "Palanquin", serif;
-    --colour-1: #74cbf6;
-    --colour-1-light: #a0dfff;
-    --colour-2: #8ddd62;
-    --colour-3: #e5c997;
-    --colour-4: #cdcdcd;
-    --text-colour: #222222;
-    /* previous palette */
-    --colour-1a: #9bd0e9;
 
-    --text-colour-1: #042416;
+    --colour-primary: #a0dfff;
+    --colour-primary-dark: #74cbf6;
+
+    --colour-accent-1: #8ddd62;
+    --colour-accent-1-dark: #31a117;
+    --colour-accent-2: #e5c997;
+
+    --colour-neutral: #cdcdcd;
+    --colour-neutral-dark: #222222;
+
+    --text-colour: #222222;
+    /* Disused text colours */
+    /* --text-colour-1: #042416;
     --text-colour-2: #051142;
-    --text-colour-3: #555555;
+    --text-colour-3: #555555; */
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 h2 {
-    color:var(--text-colour-1);
+    color:var(--text-colour);
     text-align:center;
     vertical-align: text-bottom;
-}
-
-.bar-0 {
-    background-color: var(--colour-1-light);
-    color:var(--text-colour-2);
-    text-align:center;
-    padding-top: 30px !important;
-}
-
-.bar-1 {
-    background-color: rgba(71, 139, 122, 0.733);
-    text-align: left;
-}
-
-.bar-2 {
-    background-color: #5aa186;
-    text-align: right;
-}
-
-.bar-3 {
-    background-color: rgb(118, 199, 179);
-    text-align: left;
-}
-
-.bar-4 {
-    background-color: #ffffff;
-    color: var(--text-colour-3);
-}
-
-.bar {
-    padding-top: 90px;
-    padding-bottom: 90px;
-    font-family: var(--header-font);
-    padding-right: 30px;
-    padding-left: 30px;
-}
-
-#hp-1 {
-    float: left;
-    margin: 0 15px 0 0
-}
-
-#hp-2 {
-    float: rght;
-    margin: 0 0 0 15px;
 }
 
 .button {
@@ -84,15 +42,23 @@ h2 {
     border: 5px;
     padding: 15px;
     border-radius: 12px;
-    font-family: var(--hero-text-font);
+    font-family: var(--feature-font);
     text-shadow: 1px 1px 2px #222222;
     font-size: 28px;
-    background-color: darkgreen;
-    color:#ecf4f8;
+    background-color: var(--colour-accent-1-dark);
+    color: white;
+    /* box-shadow: 1px 1px 1px 1px #cdcdcd; */
 }
 
 .feature-button:hover {
-    background-color: #cdcdcd;
+    background-color: var(--colour-neutral);
+    box-shadow: 1px 1px 1px #222222 inset;
+    text-shadow: 1px 1px 2px #222222 inset !important;
+}
+
+
+.spacer {
+    height: 1em;
 }
 
 .center {
@@ -112,16 +78,12 @@ h2 {
     margin-top:30px;
 }
 
-html {
-    scroll-behavior: smooth;
-  }
-
 .navbar-default {
     background-color: white !important;
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #222222 !important;
+    color: var(--text-colour) !important;
 }
 
 .navbar-brand {
@@ -142,12 +104,24 @@ html {
 }
 
 .navbar-btn {
-    border-color: var(--colour-1-light) !important;
+    border-color: var(--colour-primary) !important;
     border-radius: 2px !important;
-    background-color: var(--colour-1-light) !important;
+    background-color: var(--colour-primary) !important;
     cursor: pointer;
     margin-left: 10px;
 }
+
+
+/* Disused ids
+#hp-1 {
+    float: left;
+    margin: 0 15px 0 0
+}
+
+#hp-2 {
+    float: rght;
+    margin: 0 0 0 15px;
+} */
 
 #centre-box {
     display: flex;
@@ -159,9 +133,66 @@ html {
     flex-direction: column;
     padding-left: 1em;
     padding-right: 1em;
-    /* box-shadow: 4px 4px 0 0px var(--colour-4); */
+    /* box-shadow: 4px 4px 0 0px var(--colour-neutral); */
 }
 
-.spacer {
-    height: 1em;
+.box-left {
+    background-color: var(--colour-accent-1);
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 2em;
+    padding-bottom: 2.5em;
+    border-radius: 12px;
+    padding-left: 1em;
+    padding-right: 1em;
+    /* box-shadow: 4px 4px 0 0px var(--colour-neutral); */
+}
+
+.box-1 {
+    background-color: var(--colour-accent-1);
+}
+
+.bar-3 > .box-left {
+    background-color: var(--colour-accent-2) !important;
+}
+
+.box {
+    /* TODO: modularize box css */
+}
+
+.bar-header {
+    background-color: var(--colour-primary);
+    text-align:center;
+    padding-top: 30px !important;
+}
+
+/* TODO: odd and even bar formatting */
+
+.bar-1 {
+    /* background-color: rgba(71, 139, 122, 0.733); */
+    background-color: white;
+    text-align: left;
+}
+
+.bar-2 {
+    background-color: var(--colour-accent-2);
+    text-align: right;
+}
+
+.bar-3 {
+    background-color: white;
+    text-align: left;
+}
+
+.bar-4 {
+    background-color: #ffffff;
+    color: var(--text-colour);
+}
+
+.bar {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    font-family: var(--header-font);
+    padding-right: 30px;
+    padding-left: 30px;
 }
