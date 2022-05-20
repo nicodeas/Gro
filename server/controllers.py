@@ -29,7 +29,7 @@ class GameController():
         current_user.mood_recorded=False
         current_user.journal_recorded= False
         current_user.breathing_complete=False
-        current_user.meditation_cmplete=False
+        current_user.meditation_complete=False
         
         current_user.last_session = datetime.now()
         db.session.commit()
