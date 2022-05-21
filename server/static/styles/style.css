@@ -101,10 +101,17 @@ html {
 
 #canvas {
     width: auto;
-    height:90vh;
+    height:60vh;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+#game-buttons {
+    width: 100%;
+    /* background-color: white; */
+    position: absolute;
+    bottom:0%
 }
