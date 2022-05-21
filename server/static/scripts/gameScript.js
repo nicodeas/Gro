@@ -17,14 +17,14 @@ function init() {
 
     //example case for functions
     if(pageLoaded) {
-      const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, "../images/face3.png", ctx);}, 500);
+      const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, "/static/images/face3.png", ctx);}, 500);
       const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
     }
 
-    pot.src = "../images/potb.png";
-    plant.src = "../images/leaf3.png";
-    mood.src = "../images/mood-track.png";
-    face.src = "../images/face0.png";
+    pot.src = "/static/images/potb.png";
+    plant.src = "/static/images/leaf3.png";
+    mood.src = "/static/images/mood-track.png";
+    face.src = "/static/images/face0.png";
   } else {
     //fallback content here
   }
