@@ -1,32 +1,19 @@
 from server import app,db
-from flask import flash, redirect, render_template, request, url_for,session
+from flask import flash, redirect, request, url_for,session
 from .models import User, JournalPrompt,JournalEntry,Mood
 from .controllers import GameController
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
-import random
-
-@app.route('/')
-@app.route('/index')
-def index():
-    return render_template('landing/base_site.html')
-
-@app.route('/game')
-@login_required
-def load_game():
-    return render_template('game/game_page.html')
-
-@app.route('/login')
-def user_login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    return render_template('user/login.html')
     
-
 @app.route('/login',methods=["POST"])
 def user_login_post():
+    
+    ###input name fields
     username = request.form.get('username')
     password = request.form.get('password')
+    ###
+    
+    
     user = User.query.filter_by(username=username).first()
     if not user or not check_password_hash(user.password_hash,password):
         flash('Please check login details')
@@ -36,18 +23,17 @@ def user_login_post():
     return redirect(url_for('index'))
 
 
-@app.route('/signup')
-def signup_user():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    return render_template('user/signup.html')
-
 @app.route('/signup', methods=["POST"])
 def signup_user_post():
+    
+    ###input name fields
     username = request.form.get('username')
     password = request.form.get('password')
     first_name = request.form.get('first-name')
     last_name= request.form.get('last-name')
+    ###
+    
+    
     user = User.query.filter_by(username=username).first()
     if user:
         flash('User already exists.')
@@ -71,11 +57,6 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/admin')
-def admin():
-    if not current_user.is_authenticated:
-        return redirect(url_for('index'))
-    return render_template('admin/admin.html')
 
 @app.route('/create-journal-prompt', methods=["POST"])
 @login_required
@@ -83,7 +64,12 @@ def create_journal_prompt():
     if current_user.username != 'admin':
         return redirect(url_for('index'))
     else:
+        
+        ###input name fields
         prompt = request.form.get('journal-prompt')
+        ###
+        
+        
         if not prompt:
             return redirect(url_for('admin'))
         new_journal_prompt = JournalPrompt(prompt = prompt)
@@ -91,25 +77,18 @@ def create_journal_prompt():
         db.session.commit()
         return redirect(url_for('admin'))
     
-# dummy activity page
-@app.route('/activity')
-def activity():
-    return render_template('game/activity.html')
-    
-@app.route('/journal')
-def journal():
-    if not current_user.is_authenticated:
-        return redirect(url_for('index'))
-    prompt = random.choice(JournalPrompt.query.all())
-    session['prompt_id']=prompt.id
-    return render_template('game/journal.html',prompt=prompt.prompt)
 
 @app.route('/journal',methods=["POST"])
 @login_required
 def post_journal():
     user_id = current_user.id
+    
+    ###input name fields
     prompt_id= session.get("prompt_id")
     entry = request.form.get('journal-entry')
+    ###
+    
+    
     # do not post empty entries to db
     if not entry:
         return redirect(url_for('journal'))
@@ -122,7 +101,11 @@ def post_journal():
 @app.route('/mood',methods=['POST'])
 @login_required
 def post_mood():
+    
+    ###input name fields
     mood = request.form.get("mood-entry")
+    ###
+    
     if mood=="":
         return redirect(url_for('activity'))
     new_mood = Mood(mood=mood,user_id=current_user.id)
