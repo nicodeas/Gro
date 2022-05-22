@@ -83,3 +83,11 @@ def api_create_journal_prompt():
         db.session.add(new_journal_prompt)
         db.session.commit()
         return {}
+
+@app.route('/api/journal',methods=["GET"])
+@login_required
+def api_get_journal_prompt():
+    prompts = JournalPrompt.query.all()
+    prompt = random.choice(prompts)
+    # session['prompt_id']=prompt.id
+    return (prompt.prompt)

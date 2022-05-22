@@ -1,14 +1,4 @@
 function init() {
-  $.get("/api/user-gamestate",(data)=>{console.log(data);});
-  var data_call = [];
-  $.getJSON("/api/user-gamestate", (data)=>{$.each( data, function() {
-    $.each().data_call.push();
-  })});
-  console.log(data_call);
-  var user_data = data_call; //JSON.parse(data_call);
-  console.log(user_data);
-  //console.log(user_data);
-  //document.getElementById("mood-submit").addEventListener("click",function() {return;}, false)
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
     var ctx = canvas.getContext("2d");
@@ -18,16 +8,13 @@ function init() {
     var mood = new Image();
     var face = new Image();
 
-    let mood_record = user_data.mood_recorded;
-    //$.get("/api/user-gamestate",function(data){mood_record = data.mood_recorded;console.log(data.mood_recorded);})
-    console.log(mood_record);
-
     //0 = pot, 1=plant, 2=face, 3=mood
-    if(user_data.mood_record){
-      var imgArr = [pot, plant, face];
-    } else {
+    /* if($.current_user.mood_recorded){
+      console.log("mood_recorded")
+      var imgArr = [pot, plant, face, 0];
+    } else { */
       var imgArr = [pot, plant, face, mood];
-    }
+    //}
 
     var pageLoaded = false;
     
@@ -44,9 +31,7 @@ function init() {
     mood.src = "/static/images/mood-track.PNG";
     face.src = "/static/images/face0.PNG";
 
-    $.get("/user-gamestate",(data)=>{console.log(data)});
-
-    $.post("/breathing");
+    $.get("/api/user-gamestate",(data)=>{console.log(data)});
 
   } else {
     //fallback content here
@@ -110,15 +95,50 @@ function removeImage(arr, i, ctx) {
 }
 
 function breathingExercise() {
-  //document.getElementById("breathing-modal").style.display="block";
-  document.getElementById("finish-breathing").addEventListener("click", function (){console.log($.post("/api/breathing"));})
-  //$.get("/api/user-gamestate",(data)=>{console.log(data);});
+//TODO: Implement game logic and dom changes for breathing exercise
+}
+
+  
+function moodTrack() {
+    console.log("moodtrack");
+      document
+      .getElementById("mood")
+      .addEventListener("submit", function () {
+        console.log("submitted");
+          console.log($.post("/api/mood", { "mood": document.getElementById("mood-entry").value }));
+        });
+}
+
+function breathingExercise() {
+  document
+    .getElementById("finish-breathing")
+    .addEventListener("click", function () {
+      console.log($.post("/api/breathing"));
+    });
 }
 
 function meditationExercise() {
-  document.getElementById("finish-meditation").addEventListener("click", function (){console.log($.post("/api/meditation"));})
+  document
+    .getElementById("finish-meditation")
+    .addEventListener("click", function () {
+      console.log($.post("/api/meditation"));
+    });
 }
 
 function journalPrompt() {
-  document.getElementById("journal-prompt").innerHTML="<h3>prompt</h3>";
+  var prompt;
+  $.get("/api/journal", function (data) {
+    prompt = data;
+    document.getElementById("journal-prompt").innerHTML =
+      "<h3>" + prompt + "</h3>";
+  });
 }
+
+function journalExercise() {
+  
+  document
+  .getElementById("journal-form")
+  .addEventListener("submit", function () {
+      console.log("submit");
+      console.log(document.getElementById("journal-entry").value, $.post("/api/journal", { "prompt-id": "1", "entry": document.getElementById("journal-entry").value }))
+    });}

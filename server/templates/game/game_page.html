@@ -7,18 +7,9 @@
         <div class="container-fluid" id="game-buttons">
             <div class="row">
                 {% if not current_user.mood_recorded %}
-                <div class="row">
-                    <form method="POST" action="/api/mood">
-                        <div class="center" id="mood-buttons">
-                            <h4>How do you feel today?</h4>
-                            <label for="mood-entry"></label>
-                            <input type="range" id="mood-entry" name="mood" min="1" max="5">
-                            <br>
-                            <input type="submit" id="mood-submit" class="btn btn-primary">
-                            </input>
-                        </div>
-                    </form>
-                </div>
+                <button class="btn btn-primary center" id="mood-btn" data-toggle="modal" data-target="#mood-modal" onclick="moodTrack();">
+                    <h4>Check in</h4>
+                </button>
                 {% endif %}
                 {% if current_user.mood_recorded %}
                 <div class="col-md-3"></div>
@@ -77,6 +68,37 @@
     </div>
 
     <!-- Modal code adapted from https://getbootstrap.com/docs/3.3/javascript/#modals -->
+    <div class="modal" role="dialog" id="mood-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        onclick="document.getElementById('mood-modal').style.display='none'"><span aria-hidden="
+                        true">&times;</span></button>
+                    <h3 class="modal-title">How do you feel today?</h3>
+                </div>
+                <div class="modal-body">
+                    <img src="{{url_for('static',filename='/images/mood-track-modal.PNG')}}" alt="Mood scale graphic" width="70%" height="70%" class="img-center">
+                    <br>
+                    <div class="row">
+                        <form id="mood">
+                            <div class="center" id="mood-buttons">
+                                <h4>How do you feel today?</h4>
+                                <label for="mood-entry"></label>
+                                <input type="range" id="mood-entry" name="mood" min="1" max="5">
+                                <br>
+                                <input type="submit" id="mood-submit" class="btn btn-primary">
+                                </input>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal" role="dialog" id="breathing-modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -138,11 +160,11 @@
                     <h3 class="modal-title">Write in your journal!</h3>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/journal">
+                    <form id="journal-form">
                         <div id="journal-prompt">
                         </div>
                         <div class="mb-4 field">
-                            <input type="text" name="journal-entry" class="form-control" id="password-input" placeholder="Enter new journal prompt">
+                            <input type="text" name="journal-entry" class="form-control" id="journal-entry" placeholder="Enter new journal prompt">
                         </div>
                         <div class="mb-4">
                             <button class="btn btn-primary">Submit journal prompt</button>
@@ -150,7 +172,6 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <form method="POST" action="/api/journal"><button class="btn btn-primary">Finish</button></form>                     
                 </div>
             </div>
         </div>
