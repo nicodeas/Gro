@@ -3,6 +3,8 @@ from flask import  request, abort
 from .models import JournalPrompt,JournalEntry,Mood
 from .controllers import GameController
 from flask_login import current_user, login_required
+import random
+
 
 @app.route('/api/user-gamestate',methods=["GET"])
 @login_required

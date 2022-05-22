@@ -219,12 +219,16 @@ h2 {
     width: 100%;
     /* background-color: white; */
     position: absolute;
-    bottom:0%
+    bottom:5%;
 }
 
 #mood-buttons {
     background-color: white;
+    width: fit-content;
     border-radius: 12px;
-    padding: 1.5em;
+    padding-top: 0.1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-bottom: 0.3em;
     text-align: center;
 }
