@@ -89,10 +89,10 @@
     <div class="spacer"></div>
     <div class="button">
         {% if not current_user.is_authenticated %}
-            <button type="button" class="feature-button" onclick="window.location.href='{{url_for('signup_user')}}';">Sign Up!</button>
+            <button type="button" class="feature-button" onclick="window.location.href='/signup';">Sign Up!</button>
         {% endif %}
         {% if current_user.is_authenticated %}
-            <button type="button" class="feature-button" onclick="window.location.href='{{url_for('load_game')}}';">Play Now!</button>
+            <button type="button" class="feature-button" onclick="window.location.href='/game';">Play Now!</button>
         {% endif %}
     </div>
 </div>

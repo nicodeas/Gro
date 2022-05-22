@@ -42,10 +42,10 @@
                     <!-- <li><a href="{{url_for('user_login')}}">Log In</span></a></li> -->
                     <!-- <li><a href="{{url_for('signup_user')}}">Register</span></a></li> -->
                     <button type="button" class="btn btn-default navbar-btn"
-                        onclick="window.location.href='{{url_for('user_login')}}';">Log In <span
+                        onclick="window.location.href='/login';">Log In <span
                             class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
                     <button type="button" class="btn btn-default navbar-btn"
-                        onclick="window.location.href='{{url_for('signup_user')}}';">Sign Up <span
+                        onclick="window.location.href='/signup';">Sign Up <span
                             class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
                     {% endif %}
                     {% if current_user.is_authenticated %}
