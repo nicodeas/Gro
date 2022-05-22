@@ -169,9 +169,7 @@ h2 {
     padding-top: 30px !important;
 }
 
-/* TODO: odd and even bar formatting */
-
-.bar-1 {
+.bar-1, .bar-3 {
     background-color: white;
     text-align: left;
 }
@@ -181,14 +179,9 @@ h2 {
     text-align: left;
 }
 
-.bar-3 {
-    background-color: white;
-    text-align: left;
-}
-
 .bar-4 {
-    background-color: var(--colour-neutral);
-    color: var(--text-colour);
+    background-color: var(--colour-primary);
+    text-align: center;
 }
 
 .bar {
