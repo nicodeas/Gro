@@ -5,11 +5,28 @@
         <div class="container-fluid" id="game-buttons">
         <div class="row">
             {% if not current_user.mood_recorded %}
+            <div class="row">
             <form method="POST" action="/mood">
-                <button class="btn btn-primary center">
-                    How do you feel today?
-                </button>
+                <div class="center" id="mood-buttons">
+                <h3>How do you feel today?</h3>
+                <label for="mood-entry"></label>
+                <input type="range" id="mood-entry" name="mood-entry" min="1" max="5">
+                <!-- <input type="radio" id="vlow" name="mood-entry" value="1">
+                <label for="vlow">Very low</label>
+                <input type="radio" id="low" name="mood-entry" value="2">
+                <label for="low">Low</label>
+                <input type="radio" id="neut" name="mood-entry" value="3">
+                <label for="neut">Neutral</label>
+                <input type="radio" id="good" name="mood-entry" value="4">
+                <label for="good">Good</label>
+                <input type="radio" id="great" name="mood-entry" value="5">
+                <label for="great">Great!</label> -->
+                <br>
+                <input type="submit" class="btn btn-primary">
+                </input>
+                </div>
             </form>
+            </div>
             {% endif %}
             {% if current_user.mood_recorded %}
             <div class="col-md-2"></div>

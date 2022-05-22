@@ -221,3 +221,10 @@ h2 {
     position: absolute;
     bottom:0%
 }
+
+#mood-buttons {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5em;
+    text-align: center;
+}
