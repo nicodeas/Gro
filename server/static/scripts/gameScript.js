@@ -18,9 +18,9 @@ function init() {
 
     //example case for functions
     if(pageLoaded) {
-      const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, dict[face_changed], ctx);}, 500);
-      const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
-    }
+       const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, dict[face_changed], ctx);}, 500);
+       const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
+     }
 
     pot.src = "/static/images/potb.png";
     plant.src = "/static/images/leaf3.png";
@@ -41,7 +41,7 @@ dict[4] = "/static/images/face4.png";
   //array of activity ids
   var activities= [breathing, meditation, journal]
 
-  face_changed = activity_listen[activities, dict[0]];
+  face_changed = activityListen(activities, 0);
 }
 
 
@@ -51,22 +51,26 @@ function activityListen(arr, face_state) {
     //check if the element of the array equals the id of the activity - then apply its event listener, and update face variable
     for (var element of arr) {
         if (element == document.getElementById('breathing')){
-            element.addEventListener('click', breathingExercise);
-            actions_fulfilled += 1;
+          console.log("breathing element", actions_fulfilled);
+            element.addEventListener('mouseover', function() {
+              actions_fulfilled += 1;breathingExercise;console.log("breathing event", actions_fulfilled);
+          }, false);
         }
         else if (element == document.getElementById('journal')){
-            element.addEventListener('click', journalEntry);
-            actions_fulfilled += 1;
+          console.log("journal element", actions_fulfilled);
+            element.addEventListener('click', function() {actions_fulfilled += 1;journalEntry;}, false);
         }
         else if (element == document.getElementById('meditation')){
-            element.addEventListener('click', guidedMeditation);
-            actions_fulfilled += 1;
+          console.log("med element", actions_fulfilled);
+            element.addEventListener('click',  function() {actions_fulfilled += 1; guidedMeditation});
         }
         else{
             console.log("element is the wrong image");
         }
-        face_state += actions_fulfilled
+        console.log("face state", face_state);
     }
+    face_state += actions_fulfilled;
+    face_state += 1;
     return face_state;
 }
 
@@ -127,7 +131,7 @@ function removeImage(arr, i, ctx) {
 }
 
 function breathingExercise() {
-//TODO: Implement game logic and dom changes for breathing exercise
+    //TODO: Implement game logic and dom changes for breathing exercise
 return false;
 }
 
