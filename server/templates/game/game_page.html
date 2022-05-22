@@ -4,6 +4,14 @@
         <canvas id="canvas" width="700" height="1200" style="border: 2px solid black;"></canvas>
         <div class="container-fluid" id="game-buttons">
         <div class="row">
+            {% if not current_user.mood_recorded %}
+            <form method="POST" action="/mood">
+                <button class="btn btn-primary center">
+                    How do you feel today?
+                </button>
+            </form>
+            {% endif %}
+            {% if current_user.mood_recorded %}
             <div class="col-md-2"></div>
             <div class="col-md-2">
                 <form method="POST" action="/journal">
@@ -29,6 +37,7 @@
                 </form> 
             </div> 
             <div class="col-md-2"></div>
+            {% endif %}
         </div>
         </div>
     </body>

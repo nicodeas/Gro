@@ -40,6 +40,18 @@ def activity():
         return redirect(url_for('user_login'))
     return render_template('game/activity.html')
 
+@app.route('/meditation')
+def meditation():
+    if not current_user.is_authenticated:
+        return redirect(url_for('user_login'))
+    return render_template('game/meditation.html')
+
+@app.route('/breathing')
+def breathing():
+    if not current_user.is_authenticated:
+        return redirect(url_for('user_login'))
+    return render_template('game/breathing.html')
+
 @app.route('/journal')
 def journal():
     if not current_user.is_authenticated:

@@ -9,17 +9,22 @@ function init() {
     var face = new Image();
 
     //0 = pot, 1=plant, 2=face, 3=mood
-    var imgArr = [pot, plant, face, mood];
+    /* if($.current_user.mood_recorded){
+      console.log("mood_recorded")
+      var imgArr = [pot, plant, face, 0];
+    } else { */
+      var imgArr = [pot, plant, face, mood];
+    //}
 
     var pageLoaded = false;
     
     pageLoaded = loadListen(imgArr, ctx);
 
-    //example case for functions
-    if(pageLoaded) {
-      const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, "/static/images/face3.png", ctx);}, 500);
-      const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
-    }
+    // //example case for functions
+    // if(pageLoaded) {
+    //   const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, "/static/images/face3.png", ctx);}, 500);
+    //   const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
+    // }
 
     pot.src = "/static/images/potb.png";
     plant.src = "/static/images/leaf3.png";
