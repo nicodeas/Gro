@@ -1,3 +1,4 @@
+# Does not work due to database errors
 import unittest
 import time
 from server import app, db
@@ -5,38 +6,46 @@ from server.models import User
 from werkzeug.security import generate_password_hash
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import NoSuchElementException
 from webdriver_manager.firefox import GeckoDriverManager
 
 class TestMainPageTest(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
-        self.driver.maximize_window()
-        self.vars = {}
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
         db.create_all()
         test_user = User(first_name='test-fname', last_name='test-lname',
-                         username='test-uname', password_hash=generate_password_hash('test-pass'))
+                        username='test-uname', password_hash=generate_password_hash('test-pass'))
         db.session.add(test_user)
         db.session.commit()
-  
+    
     def tearDown(self):
-        self.driver.quit()
         db.session.remove()
         db.drop_all()
+        self.driver.quit()
   
     def test_existing_account(self):
         self.driver.get("http://127.0.0.1:5000/")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(3)").click()
+        self.driver.maximize_window()
+        # Test that the game link is not present if logged out
+        with self.assertRaises(NoSuchElementException):
+            self.driver.find_element(By.LINK_TEXT, "Game")
+        self.driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(4)").click()
         self.driver.find_element(By.ID, "username-input").click()
         self.driver.find_element(By.ID, "username-input").send_keys("test-uname")
         self.driver.find_element(By.ID, "password-input").send_keys("test-pass")
         self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
-        self.driver.find_element(By.LINK_TEXT, "Game").click()
+        time.sleep(2)
+        # Test that the game link becomes visible once logged in
+        game = self.driver.find_element(By.LINK_TEXT, "Game")
+        self.assertTrue(game.is_displayed)
         self.driver.find_element(By.LINK_TEXT, "Log Out").click()
     
     def test_new_account_creation(self):
         self.driver.get("http://127.0.0.1:5000/")
+        self.driver.maximize_window()
+        # Test that the game link is not present if logged out
+        with self.assertRaises(NoSuchElementException):
+            self.driver.find_element(By.LINK_TEXT, "Game")
         self.driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(4)").click()
         self.driver.find_element(By.ID, "first-name-input").click()
         self.driver.find_element(By.ID, "first-name-input").send_keys("new_test_first")
@@ -44,9 +53,10 @@ class TestMainPageTest(unittest.TestCase):
         self.driver.find_element(By.ID, "username-input").send_keys("new_test_user")
         self.driver.find_element(By.ID, "password-input").send_keys("new_test_password")
         self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
-        time.sleep(1)
-        self.driver.find_element(By.PARTIAL_LINK_TEXT, "Log Out").click()
-        self.driver.find_element(By.LINK_TEXT, "Activity").click()
+        time.sleep(2)
+        # Test that the game link becomes visible once logged in
+        game = self.driver.find_element(By.LINK_TEXT, "Game")
+        self.assertTrue(game.is_displayed)
         self.driver.find_element(By.LINK_TEXT, "Log Out").click()
 
 
