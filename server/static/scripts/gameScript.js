@@ -18,7 +18,7 @@ function init() {
 
     //example case for functions
     if(pageLoaded) {
-      const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, "/static/images/face3.png", ctx);}, 500);
+      const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, dict[face_changed], ctx);}, 500);
       const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
     }
 
@@ -29,9 +29,22 @@ function init() {
   } else {
     //fallback content here
   }
+
+  //make face dictionaries
+var dict = new Object();
+dict[0] = "/static/images/face0.png";
+dict[1] = "/static/images/face1.png";
+dict[2] = "/static/images/face2.png";
+dict[3] = "/static/images/face3.png";
+dict[4] = "/static/images/face4.png";
+
   //array of activity ids
   var activities= [breathing, meditation, journal]
+
+  face_changed = activity_listen[activities, dict[0]];
 }
+
+
 
 function activityListen(arr, face_state) {
     var actions_fulfilled = 0;
@@ -52,9 +65,9 @@ function activityListen(arr, face_state) {
         else{
             console.log("element is the wrong image");
         }
-        face_state += actions_fulfilled; 
-        
+        face_state += actions_fulfilled
     }
+    return face_state;
 }
 
 function loadListen(arr, ctx) {
@@ -115,13 +128,16 @@ function removeImage(arr, i, ctx) {
 
 function breathingExercise() {
 //TODO: Implement game logic and dom changes for breathing exercise
+return false;
 }
 
 function guidedMeditation() {
     //implement game logic for the guided meditation
+    return false;
 }
 
 function journalEntry() {
     //implement the logic for words of gratitude
+    return false;
 }
 
