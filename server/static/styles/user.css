@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(90, 161, 134);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.information-card {
+    background-color: rgb(155, 208, 233);
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.logo {
+    height: 5vh;
+    min-height: 50px;
+}
+
+.btn {
+    width: 100%;
+}
+
+.name-box {
+    display: flex;
+}
+
+.name-fields {
+    width: 49%;
+}
+
+.error-message{
+    border-radius: 5px;
+    text-align: center;
+}

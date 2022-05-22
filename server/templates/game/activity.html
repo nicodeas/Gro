@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="/mood">
+    <div class="mb-4 field">
+        <input type="number" name="mood-entry" class="form-control" id="password-input" placeholder="Enter mood">
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-primary">Submit mood</button>
+    </div>
+</form>
+<form method="POST" action="/breathing">
+    <div class="mb-4">
+        <button class="btn btn-primary">complete breathing</button>
+    </div>
+</form>
+
+<form method="POST" action="/meditation">
+    <div class="mb-4">
+        <button class="btn btn-primary">complete meditation</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="bar bar-header container-fluid">
+        <div class="row">
+            <div class="col-xs-1 col-sm-2 col-md-3 col-lg-3 col-xl-3"></div>
+            <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+                <img src="{{url_for('static',filename='graphics/logos/solidwhite.PNG')}}" alt="white logo" width="400" height="160"
+                    class="img-responsive img-center">
+                <div class="box box-centre">
+                    <h2> Build healthy habits with Gro, your friendly self-care guide.</h2>
+                    <div class="spacer"></div>
+                    <div class="button">
+                        <!-- button onclick attr from https://www.w3docs.com/snippets/html/how-to-create-an-html-button-that-acts-like-a-link.html -->
+                        <button type="button" class="feature-button"
+                            onclick="window.location.href='#important-section';">Get Started!</button>
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="h5">Or learn more below.</div>
+                    <div class="glyphicon glyphicon-menu-down"></div>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-8 col-md-3 col-lg-3 col-xl-3"></div>
+        </div>
+    </div>
+    <div class="bar bar-1 container-fluid">
+        <div class="row">
+            <div class="col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="col-xs-6 col-s-6 col-md-5 col-lg-5 col-xl-5">
+                <div class="box box-left" id="box-1">
+                    <h3>
+                        It can take 30 days to start building a habit. Almost anything is possible with a little help!
+                        Meet your very own plant friend, who will be there for you at every step. Gro together, day by
+                        day!
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2"></div>
+            <div class="col-xs-6 col-s-6 col-md-4 col-lg-4 col-xl-4">
+                <img src="{{url_for('static',filename='graphics/webpage-images/sleeping-plant.png')}}" alt="sleepy face" width="300" height="300"
+                    class="image-responsive">
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2"></div>
+        </div>
+    </div>
+    <div class="bar bar-2 container-fluid">
+        <div class="row">
+            <div class="col-md-2 col-lg-2 col-xl-2"></div>
+            <div class="col-xs-6 col-s-6 col-md-3 col-lg-3 col-xl-3">
+                <img src="{{url_for('static',filename='graphics/webpage-images/happy-plant.PNG')}}" alt="happy face" width="300" height="300"
+                    class="image-responsive">
+            </div>
+            <div class="col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="col-xs-6 col-s-6 col-md-5 col-lg-5 col-xl-5">
+                <div class="box box-right" id="box-2">
+                    <h3>
+                        Check in with Gro every day, and be guided through interactive self-care exercises. Look after your plant to
+                        look after yourself!
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-1 col-lg-1 col-xl-1"></div>
+        </div>
+    </div>
+    <div class="bar bar-3 container-fluid">
+        <div class="row">
+            <div class="col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="col-xs-6 col-s-6 col-md-5 col-lg-5 col-xl-5">
+                <div class="box box-left" id="box-3">
+                    <h3>
+                        Consistency and resiliency are key to building habits. Keep your streak and watch your plant
+                        grow. If you miss a few days, your progress will go backward, but don't worry. Keep going, keep
+                        Gro-ing, and your plant will bounce back with you.
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2"></div>
+            <div class="col-xs-6 col-s-6 col-md-4 col-lg-4 col-xl-4">
+                <img src="{{url_for('static',filename='graphics/webpage-images/neutral-plant.PNG')}}" alt="sleepy face" width="300" height="300"
+                    class="image-responsive">
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2"></div>
+        </div>
+    </div>
+    <div class="bar bar-4 container-fluid" id="important-section">
+        <h3>
+            Important information
+        </h3>
+    </div>
+</body>
+{% endblock %}
