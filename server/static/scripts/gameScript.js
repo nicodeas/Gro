@@ -56,12 +56,12 @@ function init() {
 
 
   //make face dictionaries
-var dict = new Object();
-dict[0] = "/static/images/face-1.png";
-dict[1] = "/static/images/face0.png";
-dict[2] = "/static/images/face1.png";
-dict[3] = "/static/images/face2.png";
-dict[4] = "/static/images/face3.png";
+  var dict = new Object();
+  dict[0] = "/static/images/face-1.png";
+  dict[1] = "/static/images/face0.png";
+  dict[2] = "/static/images/face1.png";
+  dict[3] = "/static/images/face2.png";
+  dict[4] = "/static/images/face3.png";
 
   //array of activity ids
   var activities= [breathing, meditation, journal]
