@@ -23,12 +23,37 @@ function init() {
      }
 
     pot.src = "/static/images/potb.png";
-    plant.src = "/static/images/leaf3.png";
+    plant.src = "/static/images/leaf1.png";
     mood.src = "/static/images/mood-track.png";
     face.src = "/static/images/face0.png";
   } else {
     //fallback content here
   }
+
+  //plant state dictionaries
+  var plant_dict = new Object();
+  plant_dict[0] = "/static/images/leaf1.png";
+  plant_dict[1] = "/static/images/leaf105.png";
+  plant_dict[2] = "/static/images/leaf2.png";
+  plant_dict[3] = "/static/images/leaf205.png";
+  plant_dict[4] = "/static/images/leaf3.png";
+  plant_dict[5] = "/static/images/leaf305.png";
+  plant_dict[6] = "/static/images/leaf4.png";
+  plant_dict[7] = "/static/images/leaf405.png";
+  plant_dict[8] = "/static/images/leaf5.png";
+  plant_dict[9] = "/static/images/leaf505.png";
+  plant_dict[10] = "/static/images/leaf6.png";
+  plant_dict[11] = "/static/images/leaf605.png";
+  plant_dict[12] = "/static/images/leaf7.png";
+  plant_dict[13] = "/static/images/leaf705.png";
+  plant_dict[14] = "/static/images/leaf8.png";
+  plant_dict[15] = "/static/images/leaf805.png";
+  plant_dict[16] = "/static/images/leaf9.png";
+  plant_dict[17] = "/static/images/leaf905.png";
+  plant_dict[18] = "/static/images/leaf10.png";
+  plant_dict[19] = "/static/images/leaf1005.png";
+  plant_dict[20] = "/static/images/leaf11.png";
+
 
   //make face dictionaries
 var dict = new Object();
