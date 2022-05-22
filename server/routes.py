@@ -124,8 +124,4 @@ def post_breathing():
 @login_required
 def post_meditation():
     GameController.update_meditation_complete()
-    return redirect(url_for('meditation'))
-
-@app.route('/user-gamestate')
-def get_game_state():
-    return current_user.get_dict()
+    return redirect(url_for('activity'))

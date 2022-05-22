@@ -1,40 +1,68 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            GRO
-        </title>
-            <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/style.css')}}">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <nav class="nav-navbar-default">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><img class="logo" src="{{url_for('static',filename='graphics/logos/colour-flowers.PNG')}}"></a>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="{{url_for('index')}}">Home</a></li>
-                        <li><a href="#">Tutorial</a></li>
-                        {% if not current_user.is_authenticated %}
-                        <li><a href="{{url_for('user_login')}}">Log In</span></a></li>
-                        <li><a href="{{url_for('signup_user')}}">Register</span></a></li>
-                        {% endif %}
-                        {% if  current_user.is_authenticated %}
-                        <li><a href="#">Account</a></li>
-                        <li><a href="{{url_for('load_game')}}">Game</a></li>
-                        <li><a href="{{url_for('journal')}}">Journal</a></li>
-                        <li><a href="{{url_for('activity')}}">Activity</a></li>
-                        {% if  current_user.username=='admin' %}
-                        <li><a href="{{url_for('admin')}}">Admin</a></li>
-                        {% endif %}
-                        <li><a href="{{url_for('logout')}}">Log Out</span></a></li>
-                        {% endif %}
+<html lang="en">
 
-                    </ul>
-                </div>
-        </nav>
-        {% block content %}
-        {% endblock %}
-    </body>
+<head>
+    <title>
+        GRO
+    </title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/style.css')}}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Athiti:wght@300&family=Comfortaa:wght@700&family=Fredoka+One&family=Palanquin&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="nav navbar-default" role="navigation">
+        <div class="container-fluid" id="nav">
+            <div class="navbar-header">
+                <!-- Mobile toggle behaviour based on https://getbootstrap.com/docs/3.3/components/#nav -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#main-navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img class="logo" alt="Gro Logo"
+                        src="{{url_for('static',filename='graphics/logos/colour-flowers-resize.PNG')}}"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{url_for('index')}}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li><a href="#">Tutorial</a></li>
+                    {% if not current_user.is_authenticated %}
+                    <!-- <li><a href="{{url_for('user_login')}}">Log In</span></a></li> -->
+                    <!-- <li><a href="{{url_for('signup_user')}}">Register</span></a></li> -->
+                    <button type="button" class="btn btn-default navbar-btn"
+                        onclick="window.location.href='/login';">Log In <span
+                            class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
+                    <button type="button" class="btn btn-default navbar-btn"
+                        onclick="window.location.href='/signup';">Sign Up <span
+                            class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+                    {% endif %}
+                    {% if current_user.is_authenticated %}
+                    <li><a href="#">Account</a></li>
+                    <li><a href="{{url_for('load_game')}}">Game</a></li>
+                    <li><a href="{{url_for('journal')}}">Journal</a></li>
+                    <li><a href="{{url_for('activity')}}">Activity</a></li>
+                    {% if current_user.username=='admin' %}
+                    <li><a href="{{url_for('admin')}}">Admin</a></li>
+                    {% endif %}
+                    <li><a href="{{url_for('logout')}}">Log Out</span></a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>

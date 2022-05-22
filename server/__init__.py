@@ -19,4 +19,4 @@ from .models import User
 def load_user(id):
     return User.query.get(int(id))
 
-from server import routes,models,renderers
+from server import routes,models,renderers,api
