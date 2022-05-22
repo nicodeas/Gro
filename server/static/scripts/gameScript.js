@@ -2,6 +2,7 @@ function init() {
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
     var ctx = canvas.getContext("2d");
+    //getContext - returns a drawing context on the canvas
 
     var pot = new Image();
     var plant = new Image();
@@ -28,6 +29,32 @@ function init() {
   } else {
     //fallback content here
   }
+  //array of activity ids
+  var activities= [breathing, meditation, journal]
+}
+
+function activityListen(arr, face_state) {
+    var actions_fulfilled = 0;
+    //check if the element of the array equals the id of the activity - then apply its event listener, and update face variable
+    for (var element of arr) {
+        if (element == document.getElementById('breathing')){
+            element.addEventListener('click', breathingExercise);
+            actions_fulfilled += 1;
+        }
+        else if (element == document.getElementById('journal')){
+            element.addEventListener('click', journalEntry);
+            actions_fulfilled += 1;
+        }
+        else if (element == document.getElementById('meditation')){
+            element.addEventListener('click', guidedMeditation);
+            actions_fulfilled += 1;
+        }
+        else{
+            console.log("element is the wrong image");
+        }
+        face_state += actions_fulfilled; 
+        
+    }
 }
 
 function loadListen(arr, ctx) {
@@ -88,5 +115,13 @@ function removeImage(arr, i, ctx) {
 
 function breathingExercise() {
 //TODO: Implement game logic and dom changes for breathing exercise
+}
+
+function guidedMeditation() {
+    //implement game logic for the guided meditation
+}
+
+function journalEntry() {
+    //implement the logic for words of gratitude
 }
 
