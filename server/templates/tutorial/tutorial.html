@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="bar bar-header container-fluid">
+        <h1>
+            Tutorial
+        </h1>
+        <h4>
+            A quick guide to getting started
+        </h4>
+    </div>
+    <div class="bar bar-3 container-fluid">
+        <div class="row">
+            <div class="col-xl-7 col-md-6">
+                <h2>
+                    Upon starting the game you will be presented with your Gro-buddy, as well as three buttons to interact with.
+                </h2>
+                <h2>
+                    They each provide a separate positive mental health activity for you to complete in order to help you build habits while
+                    helping your Gro-buddy grow.
+                </h2>
+            </div>
+            <div class="col-xl-7 col-md-6">
+                <img src="{{url_for('static',filename='graphics/tutorial-images/tutorial-plant.PNG')}}", alt="plant with buttons" width="250"
+                height="300" class="mg-responsive img-center">
+            </div>
+        </div>
+    </div>
+    <div class="bar bar-2 container-fluid">
+        <div class="row">
+            <div class="col-xl-7 col-md-6">
+                <img src="{{url_for('static',filename='graphics/tutorial-images/tutorial-fertilizer.PNG')}}", alt="plant with buttons" width="250"
+                height="300" class="mg-responsive img-center">
+            </div>
+            <div class="col-xl-7 col-md-6">
+                <h2>
+                    The first activity is a mood journal entry, represented by the fertilizer icon.
+                </h2>
+                <h2>
+                    For this activity, you are asked to provide a rating for your mood, which is then tracked in the app.
+                </h2>
+                <h2>
+                    With each activity completed, your plant becomes happier!
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="bar bar-3 container-fluid">
+        <div class="row">
+            <div class="col-xl-7 col-md-6">
+                <h2>
+                    The second activity is performing a guided breathing exercise, represented by a watering can.
+                </h2>
+                <h2>
+                    For this activity, you breathe with a visual aid that assists you in taking slow, deep breaths in order to relieve stress.
+                </h2>
+            </div>
+            <div class="col-xl-7 col-md-6">
+                <img src="{{url_for('static',filename='graphics/tutorial-images/tutorial-wateringcan.PNG')}}", alt="plant with buttons" width="250"
+                height="300" class="mg-responsive img-center">
+            </div>
+        </div>
+    </div>
+    <div class="bar bar-2 container-fluid">
+        <div class="row">
+            <div class="col-xl-7 col-md-6">
+                <img src="{{url_for('static',filename='graphics/tutorial-images/tutorial-sunlight.PNG')}}", alt="plant with buttons" width="250"
+                height="300" class="mg-responsive img-center">
+            </div>
+            <div class="col-xl-7 col-md-6">
+                <h2>
+                    The third activity is a body scan meditation, represented by a sun.
+                </h2>
+                <h2>
+                    For this activity, you are given instructions to perform a body scan meditation to practice mindfulness.
+                </h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}
