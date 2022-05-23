@@ -191,7 +191,7 @@ function journalExercise() {
           "<h4>" + prompt + "</h4>"; 
       });
     }
-    document.getElementById("journal-prompt").onsubmit = function(){
+    document.getElementById("journal-form").onsubmit = function(){
         location.reload(true);
     }
   }
