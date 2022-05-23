@@ -193,10 +193,6 @@ function removeImage(arr, i, ctx) {
   drawArray(arr, ctx);
 }
 
-function breathingExercise() {
-//TODO: Implement game logic and dom changes for breathing exercise
-}
-
   
 function moodTrack() {
     console.log("moodtrack");
