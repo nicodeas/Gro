@@ -56,14 +56,6 @@ function init() {
     
     pageLoaded = loadListen(imgArr, ctx);
 
-    //example case for functions
-    if(pageLoaded) {
-       const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, dict[face_changed], ctx);}, 500);
-       const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
-     }
-
-    var plant_result = plantResult(plant_changed, plant_dict);
-
     pot.src = "/static/images/potb.png";
     plant.src = "/static/images/leaf1.png";
     mood.src = "/static/images/mood-track.png";
@@ -72,6 +64,16 @@ function init() {
     } else {
         //fallback content here
     }
+
+    //example case for functions
+    if(pageLoaded) {
+       const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, dict[face_changed], ctx);}, 500);
+       const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
+     }
+
+    var plant_result = plantResult(plant_changed, plant_dict);
+
+    
   
   var plant_changed = plantState();
   
