@@ -75,6 +75,7 @@ function init() {
   }
 
 } 
+
 function loadListen(arr, ctx) {
   var loaded = 0;
   let len = arr.length;
@@ -142,6 +143,9 @@ function moodTrack() {
           //modified from https://stackoverflow.com/questions/18490026/refresh-reload-the-content-in-div-using-jquery-ajax
           $("#game-buttons").load(location.href + " #game-buttons");
         });
+        document.getElementById("mood").onsubmit = function(){
+            location.reload(true);
+        }
 }
 
 function breathingExercise() {
@@ -152,6 +156,9 @@ function breathingExercise() {
       //change image here
       $("#game-buttons").load(location.href + " #game-buttons");
     });
+    document.getElementById("finish-breathing").onsubmit = function(){
+        location.reload(true);
+    }
 }
 
 function meditationExercise() {
@@ -161,6 +168,9 @@ function meditationExercise() {
       console.log($.post("/api/meditation"));
       $("#game-buttons").load(location.href + " #game-buttons");
     });
+    document.getElementById("finish-meditation").onsubmit = function(){
+        location.reload(true);
+    }
 }
 
 
@@ -180,5 +190,8 @@ function journalExercise() {
         document.getElementById("journal-prompt").innerHTML =
           "<h4>" + prompt + "</h4>"; 
       });
+    }
+    document.getElementById("journal-prompt").onsubmit = function(){
+        location.reload(true);
     }
   }
