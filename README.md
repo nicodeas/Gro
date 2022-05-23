@@ -74,3 +74,5 @@ To test the application, run:
 ```
 
 
+## Notes
+The game page images are off-center due to the game art itself and not css alignment
