@@ -126,20 +126,18 @@ function meditationExercise() {
 }
 
 function journalPrompt() {
-  var prompt;
+  //var prompt;
   $.get("/api/get-prompt", function (data) {
-    console.log(data);
     prompt = data;
     document.getElementById("journal-prompt").innerHTML =
-      "<h3>" + prompt + "</h3>";
+      "<h4>" + prompt + "</h4>"; 
   });
 }
 
 function journalExercise() {
-  
   document
-  .getElementById("journal-form")
-  .addEventListener("submit", function () {
-      console.log("submit");
-      console.log(document.getElementById("journal-entry").value, $.post("/api/journal", { "prompt-id": "1", "entry": document.getElementById("journal-entry").value }))
+  .getElementById("journal-submit")
+  .addEventListener("click", function () {
+      var entryValue = document.getElementById("journal-entry").value;
+      console.log($.post("/api/journal", { prompt_id: "1", entry: entryValue, }))
     });}

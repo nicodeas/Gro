@@ -151,13 +151,13 @@
     </div>
 
     <div class="modal" role="dialog" id="journal-modal">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="document.getElementById('journal-modal').style.display='none'""><span aria-hidden="
+                        onclick="document.getElementById('journal-modal').style.display='none'"><span aria-hidden="
                         true">&times;</span></button>
-                    <h3 class="modal-title">Write in your journal!</h3>
+                    <h3 class="modal-title">Write in your journal and feed your plant!</h3>
                 </div>
                 <div class="modal-body">
                     <form id="journal-form">
@@ -167,7 +167,7 @@
                             <input type="text" name="journal-entry" class="form-control" id="journal-entry" placeholder="Enter new journal prompt">
                         </div>
                         <div class="mb-4">
-                            <button class="btn btn-primary">Submit journal prompt</button>
+                            <button class="btn btn-primary" id="journal-submit">Submit journal prompt</button>
                         </div>
                     </form>
                 </div>
