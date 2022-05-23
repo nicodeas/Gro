@@ -15,7 +15,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-2">
                     {% if not current_user.journal_recorded %}
-                        <button class="btn btn-primary" id="journal" data-toggle="modal" data-target="#journal-modal" onclick="journalPrompt();">
+                        <button class="btn btn-primary" id="journal" data-toggle="modal" data-target="#journal-modal" onclick="journalExercise();">
                             <img src="{{url_for('static',filename='/images/fertilizer-icon.PNG')}}"
                                 alt="Write in your journal!" width="75px" height="75px">
                             <h4>Food</h4>
@@ -151,7 +151,7 @@
     </div>
 
     <div class="modal" role="dialog" id="journal-modal">
-        <div class="modal-dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"

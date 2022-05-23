@@ -8,13 +8,8 @@ function init() {
     var mood = new Image();
     var face = new Image();
 
-    //0 = pot, 1=plant, 2=face, 3=mood
-    /* if($.current_user.mood_recorded){
-      console.log("mood_recorded")
-      var imgArr = [pot, plant, face, 0];
-    } else { */
-      var imgArr = [pot, plant, face, mood];
-    //}
+    var imgArr = [pot, plant, face];
+
 
     var pageLoaded = false;
     
@@ -28,8 +23,20 @@ function init() {
 
     pot.src = "/static/images/potb.PNG";
     plant.src = "/static/images/leaf3.PNG";
-    mood.src = "/static/images/mood-track.PNG";
     face.src = "/static/images/face0.PNG";
+
+/*     const gameStateResp = new XMLHttpRequest;
+    gameStateResp.open("GET","/api/user-gamestate");
+    gameStateResp.send();
+    var gameStateData;
+
+    gameStateResp.onreadystatechange=function(){
+      if(this.readyState==4 && this.status==200){
+        console.log("http resp",gameStateResp.response);
+        gameStateData=gameStateResp.response;
+        console.log("gsd", gameStateData);
+      }
+    } */
 
     $.get("/api/user-gamestate",(data)=>{console.log(data)});
 
@@ -37,7 +44,7 @@ function init() {
     //fallback content here
   }
 }
-
+ 
 function loadListen(arr, ctx) {
   var loaded = 0;
   let len = arr.length;
@@ -106,6 +113,8 @@ function moodTrack() {
       .addEventListener("submit", function () {
         console.log("submitted");
           console.log($.post("/api/mood", { "mood": document.getElementById("mood-entry").value }));
+          //modified from https://stackoverflow.com/questions/18490026/refresh-reload-the-content-in-div-using-jquery-ajax
+          $("#game-buttons").load(location.href + " #game-buttons");
         });
 }
 
@@ -114,6 +123,8 @@ function breathingExercise() {
     .getElementById("finish-breathing")
     .addEventListener("click", function () {
       console.log($.post("/api/breathing"));
+      //change image here
+      $("#game-buttons").load(location.href + " #game-buttons");
     });
 }
 
@@ -122,22 +133,26 @@ function meditationExercise() {
     .getElementById("finish-meditation")
     .addEventListener("click", function () {
       console.log($.post("/api/meditation"));
+      $("#game-buttons").load(location.href + " #game-buttons");
     });
 }
 
-function journalPrompt() {
-  //var prompt;
-  $.get("/api/get-prompt", function (data) {
-    prompt = data;
-    document.getElementById("journal-prompt").innerHTML =
-      "<h4>" + prompt + "</h4>"; 
-  });
-}
 
 function journalExercise() {
-  document
-  .getElementById("journal-submit")
-  .addEventListener("click", function () {
+  journalPrompt();
+    document
+  .getElementById("journal-form")
+  .addEventListener("submit", function () {
       var entryValue = document.getElementById("journal-entry").value;
-      console.log($.post("/api/journal", { prompt_id: "1", entry: entryValue, }))
-    });}
+      console.log($.post("/api/journal", { "prompt_id": "1", "entry": entryValue, }))
+    });
+    
+    function journalPrompt() {
+      //var prompt;
+      $.get("/api/get-prompt", function (data) {
+        prompt = data;
+        document.getElementById("journal-prompt").innerHTML =
+          "<h4>" + prompt + "</h4>"; 
+      });
+    }
+  }
