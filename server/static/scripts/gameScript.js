@@ -1,5 +1,35 @@
 function init() {
   var canvas = document.getElementById("canvas");
+  var dict = new Object();
+    dict[0] = "/static/images/face-1.PNG";
+    dict[1] = "/static/images/face0.PNG";
+    dict[2] = "/static/images/face1.PNG";
+    dict[3] = "/static/images/face2.PNG";
+    dict[4] = "/static/images/face3.PNG";
+
+    //plant state dictionaries
+    var plant_dict = new Object();
+    plant_dict[0] = "/static/images/leaf1.PNG";
+    plant_dict[1] = "/static/images/leaf105.PNG";
+    plant_dict[2] = "/static/images/leaf2.PNG";
+    plant_dict[3] = "/static/images/leaf205.PNG";
+    plant_dict[4] = "/static/images/leaf3.PNG";
+    plant_dict[5] = "/static/images/leaf305.PNG";
+    plant_dict[6] = "/static/images/leaf4.PNG";
+    plant_dict[7] = "/static/images/leaf405.PNG";
+    plant_dict[8] = "/static/images/leaf5.PNG";
+    plant_dict[9] = "/static/images/leaf505.PNG";
+    plant_dict[10] = "/static/images/leaf6.PNG";
+    plant_dict[11] = "/static/images/leaf605.PNG";
+    plant_dict[12] = "/static/images/leaf7.PNG";
+    plant_dict[13] = "/static/images/leaf705.PNG";
+    plant_dict[14] = "/static/images/leaf8.PNG";
+    plant_dict[15] = "/static/images/leaf805.PNG";
+    plant_dict[16] = "/static/images/leaf9.PNG";
+    plant_dict[17] = "/static/images/leaf905.PNG";
+    plant_dict[18] = "/static/images/leaf10.PNG";
+    plant_dict[19] = "/static/images/leaf1005.PNG";
+    plant_dict[20] = "/static/images/leaf11.PNG";
   if (canvas.getContext) {
     var ctx = canvas.getContext("2d");
 
@@ -8,36 +38,7 @@ function init() {
     var mood = new Image();
     var face = new Image();
 
-    var dict = new Object();
-  dict[0] = "/static/images/face-1.PNG";
-  dict[1] = "/static/images/face0.PNG";
-  dict[2] = "/static/images/face1.PNG";
-  dict[3] = "/static/images/face2.PNG";
-  dict[4] = "/static/images/face3.PNG";
-
-   //plant state dictionaries
-   var plant_dict = new Object();
-   plant_dict[0] = "/static/images/leaf1.PNG";
-   plant_dict[1] = "/static/images/leaf105.PNG";
-   plant_dict[2] = "/static/images/leaf2.PNG";
-   plant_dict[3] = "/static/images/leaf205.PNG";
-   plant_dict[4] = "/static/images/leaf3.PNG";
-   plant_dict[5] = "/static/images/leaf305.PNG";
-   plant_dict[6] = "/static/images/leaf4.PNG";
-   plant_dict[7] = "/static/images/leaf405.PNG";
-   plant_dict[8] = "/static/images/leaf5.PNG";
-   plant_dict[9] = "/static/images/leaf505.PNG";
-   plant_dict[10] = "/static/images/leaf6.PNG";
-   plant_dict[11] = "/static/images/leaf605.PNG";
-   plant_dict[12] = "/static/images/leaf7.PNG";
-   plant_dict[13] = "/static/images/leaf705.PNG";
-   plant_dict[14] = "/static/images/leaf8.PNG";
-   plant_dict[15] = "/static/images/leaf805.PNG";
-   plant_dict[16] = "/static/images/leaf9.PNG";
-   plant_dict[17] = "/static/images/leaf905.PNG";
-   plant_dict[18] = "/static/images/leaf10.PNG";
-   plant_dict[19] = "/static/images/leaf1005.PNG";
-   plant_dict[20] = "/static/images/leaf11.PNG";
+    
 
    var activities= ['breathing', 'meditation', 'journal'];
    var face_changed = activityListen(activities, 0);
@@ -64,6 +65,11 @@ function init() {
     }
 
 
+    function plantState(){
+        let plant_state = User.plant_state;
+        $.get('/api/user-gamestate', (data) => 
+        {plant_state} );
+    }
 
     pot.src = "/static/images/potb.PNG";
     plant.src = "/static/images/leaf3.PNG";
@@ -90,11 +96,11 @@ function plantResult(value, dict){
     }
 }
 
-function plantState(){
-    let plant_state = plant;
-    $.get('/user-gamestate', 
-    {plant_state:plant_state} )
-}
+// function plantState(){
+//     let plant_state = plant;
+//     $.get('/api/user-gamestate', (data) => 
+//     {plant_state} );
+// }
 
 function activityListen(arr, face_state) {
     var actions_fulfilled = 0;
