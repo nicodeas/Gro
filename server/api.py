@@ -32,11 +32,10 @@ def api_post_journal():
     #     "entry":##,
     # }
     user_id = current_user.id
-    data = request.get_json()
-    prompt_id = int(data.get('prompt_id'))
-    entry = data.get('entry')
+    prompt_id = request.form['prompt_id']
+    entry = request.form['entry']
     
-    if entry=="" or not user_id or not prompt_id:
+    if entry=="" or not prompt_id:
         abort(500,description="Missing fields")
     
     journal_entry = JournalEntry(user_id= user_id,entry=entry,journal_prompt_id=prompt_id)
@@ -53,11 +52,9 @@ def api_post_mood():
     #     "mood":##,
     # }
     user_id = current_user.id
-    data = request.get_json()
+    mood = request.form['mood']
     
-    mood = int(data.get('mood'))
-    
-    if mood=="" or not user_id:
+    if mood=="":
         abort(500,description="Missing fields")
         
     new_mood = Mood(mood=mood,user_id=user_id)
@@ -74,11 +71,10 @@ def api_create_journal_prompt():
     # {
     #     "journal_prompt":##,
     # }
-    data = request.get_json()
     if current_user.username != 'admin':
         abort(405,description="Not allowed for non admin users")
     else:
-        prompt = data.get('journal_prompt')
+        prompt = request.form['journal_prompt']
         if prompt=="":
             abort(500,description="Missing fields")
         new_journal_prompt = JournalPrompt(prompt = prompt)

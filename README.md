@@ -37,5 +37,13 @@ Run:
 ``` 
 flask run
 ```
+---
+
+## Admin
+1. Click on signup and create a user with username ```admin```
+1. Once you are logged in as admin, click on the admin tab and add jounal prompts.
+    - Please enter several prompts upon first launch of game
+
+Only the admin user has access to the admin portal. Game will not be ready for users if this step is not complete.
 
 

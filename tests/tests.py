@@ -35,6 +35,16 @@ class UserModelCase(unittest.TestCase):
         self.assertFalse(user.journal_recorded)
         self.assertFalse(user.breathing_complete)
         self.assertFalse(user.meditation_complete)
+    
+    def test_user_creation_with_same_username(self):
+        with self.assertRaises(Exception) as context:
+            user =User(first_name='first_name', last_name='last_name',
+                            username='test_user', password_hash=generate_password_hash('test_password'))
+            db.session.add(user)
+            db.session.commit()
+            print(context.exception) 
+        self.assertTrue('IntegrityError' in str(context.exception))
+
 
     def test_add_mood(self):
         user = User.query.filter_by(username='test_user').first()
@@ -78,6 +88,15 @@ class UserModelCase(unittest.TestCase):
 
         for expected in expected_result:
             self.assertEqual(result.get(expected), expected_result[expected])
+            
+    def test_is_not_prunable(self):
+        user = User.query.filter_by(username='test_user').first()
+        self.assertFalse(user.is_prunable())
+        
+    def test_is_prunable(self):
+        user = User.query.filter_by(username='test_user').first()
+        user.plant_state=21
+        self.assertTrue(user.is_prunable())
 
 
 if __name__ == '__main__':
