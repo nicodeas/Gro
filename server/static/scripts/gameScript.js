@@ -24,8 +24,10 @@ function init() {
 
     pot.src = "/static/images/potb.png";
     plant.src = "/static/images/leaf1.png";
+    //plant.src = plant_result;
     mood.src = "/static/images/mood-track.png";
     face.src = "/static/images/face0.png";
+    //face.src = face_changed;
   } else {
     //fallback content here
   }
@@ -67,9 +69,24 @@ function init() {
   var activities= [breathing, meditation, journal]
 
   face_changed = activityListen(activities, 0);
+  plant_changed = plantState();
+  plant_result = plantResult(plant_changed, plant_dict);
 }
 
+function plantResult(value, dict){
+    //compare with the dictionary values
+    for(const element of dict){
+        if(element==value){
+            return element;
+        }
+    }
+}
 
+function plantState(){
+    let plant_state = plant;
+    $.get('/user-gamestate', 
+    {plant_state:plant_state} )
+}
 
 function activityListen(arr, face_state) {
     var actions_fulfilled = 0;
