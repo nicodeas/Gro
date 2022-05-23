@@ -37,7 +37,8 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{{url_for('index')}}">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li><a href="#">Tutorial</a></li>
+                    <li><a href="{{url_for('tutorial')}}">Tutorial</a>
+                    </li>
                     {% if not current_user.is_authenticated %}
                     <!-- <li><a href="{{url_for('user_login')}}">Log In</span></a></li> -->
                     <!-- <li><a href="{{url_for('signup_user')}}">Register</span></a></li> -->
