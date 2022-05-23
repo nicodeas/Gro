@@ -48,17 +48,6 @@ function init() {
     var pageLoaded = false;
     
     pageLoaded = loadListen(imgArr, ctx);
-
-    //example case for functions
-    // if(pageLoaded) {
-    //   const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, "/static/images/face3.png", ctx);}, 500);
-    //   const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
-    // }
-
-    pot.src = "/static/images/potb.PNG";
-    plant.src = "/static/images/leaf3.PNG";
-    //face.src = "/static/images/face0.PNG";
-    face.src = dict[face_changed];
     
 
     const gameStateResp = new XMLHttpRequest;
@@ -74,13 +63,19 @@ function init() {
       }
     }
 
+
+
+    pot.src = "/static/images/potb.PNG";
+    plant.src = "/static/images/leaf3.PNG";
+    //plant.src = gameStateResp;
+    //face.src = "/static/images/face0.PNG";
+    face.src = dict[face_changed];
+
     $.get("/api/user-gamestate",(data)=>{console.log(data)});
 
   } else {
     //fallback content here
   }
-  //array of activity ids
-  
 
   var plant_result = plantResult(plant_changed, plant_dict);
 
@@ -131,8 +126,8 @@ function activityListen(arr, face_state) {
             console.log("element is the wrong image");
         }
         console.log("face state", face_state);
+        face_state += actions_fulfilled;
     }
-    face_state += actions_fulfilled;
     face_state += 1;
     return face_state;
 }
