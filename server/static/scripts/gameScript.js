@@ -41,9 +41,6 @@ function init() {
 
     
 
-   var activities= ['breathing', 'meditation', 'journal'];
-   //var face_changed = activityListen(activities, 0);
-
     var imgArr = [pot, plant, face];
 
 
@@ -77,44 +74,7 @@ function init() {
     //fallback content here
   }
 
-}
-
-// function activityListen(arr, face_state) {
-//     var actions_fulfilled = 0;
-//     //check if the element of the array equals the id of the activity - then apply its event listener, and update face variable
-//     for (var element of arr) {
-//         if (element == document.getElementById('breathing')){
-//           console.log("breathing element", actions_fulfilled);
-//             element.addEventListener('click', function() {
-//               actions_fulfilled += 1;
-//               breathingExercise();
-//               console.log("breathing event", actions_fulfilled);
-//           }, false);
-//         }
-//         else if (element == document.getElementById('journal')){
-//           console.log("journal element", actions_fulfilled);
-//             element.addEventListener('click', function() {
-//                 actions_fulfilled += 1;
-//                 journalExercise();
-//             }, false);
-//         }
-//         else if (element == document.getElementById('meditation')){
-//           console.log("med element", actions_fulfilled);
-//             element.addEventListener('click',  function() {
-//                 actions_fulfilled += 1; 
-//                 meditationExercise();
-//             });
-//         }
-//         else{
-//             console.log("element is the wrong image");
-//         }
-//         console.log("face state", face_state);
-//         face_state += actions_fulfilled;
-//     }
-//     face_state += 1;
-//     return face_state;
-// }
- 
+} 
 function loadListen(arr, ctx) {
   var loaded = 0;
   let len = arr.length;
@@ -132,7 +92,7 @@ function loadListen(arr, ctx) {
       continue;
     } else {
       console.log("arr element not image");
-      //TODO: error handling
+
     }
     i += 1;
   }
