@@ -8,28 +8,29 @@ function init() {
     dict[4] = "/static/images/face3.PNG";
 
     //plant state dictionaries
-    var plant_dict = new Object();
-    plant_dict[0] = "/static/images/leaf1.PNG";
-    plant_dict[1] = "/static/images/leaf105.PNG";
-    plant_dict[2] = "/static/images/leaf2.PNG";
-    plant_dict[3] = "/static/images/leaf205.PNG";
-    plant_dict[4] = "/static/images/leaf3.PNG";
-    plant_dict[5] = "/static/images/leaf305.PNG";
-    plant_dict[6] = "/static/images/leaf4.PNG";
-    plant_dict[7] = "/static/images/leaf405.PNG";
-    plant_dict[8] = "/static/images/leaf5.PNG";
-    plant_dict[9] = "/static/images/leaf505.PNG";
-    plant_dict[10] = "/static/images/leaf6.PNG";
-    plant_dict[11] = "/static/images/leaf605.PNG";
-    plant_dict[12] = "/static/images/leaf7.PNG";
-    plant_dict[13] = "/static/images/leaf705.PNG";
-    plant_dict[14] = "/static/images/leaf8.PNG";
-    plant_dict[15] = "/static/images/leaf805.PNG";
-    plant_dict[16] = "/static/images/leaf9.PNG";
-    plant_dict[17] = "/static/images/leaf905.PNG";
-    plant_dict[18] = "/static/images/leaf10.PNG";
-    plant_dict[19] = "/static/images/leaf1005.PNG";
-    plant_dict[20] = "/static/images/leaf11.PNG";
+    const plant_dict = {
+      0: "/static/images/leaf1.PNG",
+      1: "/static/images/leaf105.PNG",
+      2: "/static/images/leaf2.PNG",
+      3: "/static/images/leaf205.PNG",
+      4: "/static/images/leaf3.PNG",
+      5: "/static/images/leaf305.PNG",
+      6: "/static/images/leaf4.PNG",
+      7: "/static/images/leaf405.PNG",
+      8: "/static/images/leaf5.PNG",
+      9: "/static/images/leaf505.PNG",
+      10: "/static/images/leaf6.PNG",
+      11: "/static/images/leaf605.PNG",
+      12: "/static/images/leaf7.PNG",
+      13: "/static/images/leaf705.PNG",
+      14: "/static/images/leaf8.PNG",
+      15: "/static/images/leaf805.PNG",
+      16: "/static/images/leaf9.PNG",
+      17: "/static/images/leaf905.PNG",
+      18: "/static/images/leaf10.PNG",
+      19: "/static/images/leaf1005.PNG",
+      20: "/static/images/leaf11.PNG",
+    };
   if (canvas.getContext) {
     var ctx = canvas.getContext("2d");
 
@@ -72,14 +73,16 @@ function init() {
     // }
 
     function plantState(){
-        const plant_state = $(plant).val(); 
-        $.get("/api/user-gamestate",(data)=>{console.log(data)});
+      $.get("/api/user-gamestate", (data) => {
+       const plant_state = data["plant_state"]
+        plant.src = plant_dict[plant_state]
+        });
     }
     var plant_changed = plantState();
     
 
     pot.src = "/static/images/potb.PNG";
-    plant.src = "/static/images/leaf3.PNG";
+    // plant.src = "/static/images/leaf3.PNG";
     //plant.src = plant_changed;
     //face.src = "/static/images/face0.PNG";
     face.src = dict[face_changed];
