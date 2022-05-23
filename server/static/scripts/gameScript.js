@@ -65,36 +65,44 @@ function init() {
     }
 
 
+    // function plantState(){
+    //     let plant_state = User.plant_state;
+    //     $.get('/api/user-gamestate', (data) => 
+    //     {plant_state} );
+    // }
+
     function plantState(){
-        let plant_state = User.plant_state;
-        $.get('/api/user-gamestate', (data) => 
-        {plant_state} );
+        const plant_state = 
+        $.get("/api/user-gamestate",(data)=>{console.log(data)});
     }
+    var plant_changed = plantState();
 
     pot.src = "/static/images/potb.PNG";
     plant.src = "/static/images/leaf3.PNG";
-    //plant.src = gameStateResp;
+    //plant.src = plant_changed;
     //face.src = "/static/images/face0.PNG";
     face.src = dict[face_changed];
 
-    $.get("/api/user-gamestate",(data)=>{console.log(data)});
+    
+
+    var plant_result = plantResult(plant_changed, plant_dict);
+
+    
 
   } else {
     //fallback content here
   }
-
-  var plant_result = plantResult(plant_changed, plant_dict);
-
-  var plant_changed = plantState();
-}
-
-function plantResult(value, dict){
+  function plantResult(value, dict){
     //compare with the dictionary values
     if(dict.some(e => e.dict[key1] == value)){
         console.log('exists');
         return dict[key1]
     }
 }
+
+}
+
+
 
 // function plantState(){
 //     let plant_state = plant;
