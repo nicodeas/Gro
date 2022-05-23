@@ -1,7 +1,7 @@
 from server import app
 from flask import redirect, render_template, url_for,session
 from .models import JournalPrompt
-from flask_login import current_user, login_required
+from flask_login import current_user
 import random
 
 @app.route('/')
