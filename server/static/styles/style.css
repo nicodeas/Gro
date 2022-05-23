@@ -204,3 +204,31 @@ h2 {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+#canvas {
+    width: auto;
+    height:60vh;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#game-buttons {
+    width: 100%;
+    /* background-color: white; */
+    position: absolute;
+    bottom:5%;
+}
+
+#mood-buttons {
+    background-color: white;
+    width: fit-content;
+    border-radius: 12px;
+    padding-top: 0.1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-bottom: 0.3em;
+    text-align: center;
+}

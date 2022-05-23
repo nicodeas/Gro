@@ -107,18 +107,18 @@ def post_mood():
     ###
     
     if mood=="":
-        return redirect(url_for('activity'))
+        return redirect(url_for('mood'))
     new_mood = Mood(mood=mood,user_id=current_user.id)
     db.session.add(new_mood)
     db.session.commit()
     GameController.update_mood_recorded()
-    return redirect(url_for('activity'))
+    return redirect(url_for('mood'))
 
 @app.route('/breathing',methods=["POST"])
 @login_required
 def post_breathing():
     GameController.update_breathing_complete()
-    return redirect(url_for('activity'))
+    return redirect(url_for('breathing'))
 
 @app.route('/meditation',methods=["POST"])
 @login_required
