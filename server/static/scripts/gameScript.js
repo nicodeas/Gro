@@ -72,10 +72,11 @@ function init() {
     // }
 
     function plantState(){
-        const plant_state = 
+        const plant_state = $(plant).val(); 
         $.get("/api/user-gamestate",(data)=>{console.log(data)});
     }
     var plant_changed = plantState();
+    
 
     pot.src = "/static/images/potb.PNG";
     plant.src = "/static/images/leaf3.PNG";
