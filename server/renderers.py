@@ -9,6 +9,10 @@ import random
 def index():
     return render_template('landing/base_site.html')
 
+@app.route('/tutorial')
+def tutorial():
+    return render_template('tutorial/tutorial.html')
+
 @app.route('/game')
 def load_game():
     if not current_user.is_authenticated:
