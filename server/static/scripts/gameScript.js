@@ -71,7 +71,7 @@ function init() {
     
 
   } else {
-    //fallback content here
+    console.error("This activity is not supported, please try refreshing, or try a supported browser!");
   }
 
 } 
@@ -92,7 +92,7 @@ function loadListen(arr, ctx) {
       //image has been removed
       continue;
     } else {
-      console.log("arr element not image");
+      console.error("Element is not an image!");
 
     }
     i += 1;
@@ -106,6 +106,7 @@ function loadListen(arr, ctx) {
       drawArray(arr, ctx);
       return true;
     } else {
+        console.error("Error loading!");
     }
   }
 
