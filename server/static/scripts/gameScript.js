@@ -1,11 +1,12 @@
 function init() {
   var canvas = document.getElementById("canvas");
-  var dict = new Object();
-    dict[0] = "/static/images/face-1.PNG";
-    dict[1] = "/static/images/face0.PNG";
-    dict[2] = "/static/images/face1.PNG";
-    dict[3] = "/static/images/face2.PNG";
-    dict[4] = "/static/images/face3.PNG";
+  const pot_dict = {
+    0: "/static/images/face-1.PNG",
+    1: "/static/images/face0.PNG",
+    2: "/static/images/face1.PNG",
+    3: "/static/images/face2.PNG",
+    4: "/static/images/face3.PNG",
+  };
 
     //plant state dictionaries
     const plant_dict = {
@@ -36,13 +37,12 @@ function init() {
 
     var pot = new Image();
     var plant = new Image();
-    var mood = new Image();
     var face = new Image();
 
     
 
    var activities= ['breathing', 'meditation', 'journal'];
-   var face_changed = activityListen(activities, 0);
+   //var face_changed = activityListen(activities, 0);
 
     var imgArr = [pot, plant, face];
 
@@ -51,27 +51,6 @@ function init() {
     
     pageLoaded = loadListen(imgArr, ctx);
     
-
-    const gameStateResp = new XMLHttpRequest;
-    gameStateResp.open("GET","/api/user-gamestate");
-    gameStateResp.send();
-    var gameStateData;
-
-    gameStateResp.onreadystatechange=function(){
-      if(this.readyState==4 && this.status==200){
-        console.log("http resp",gameStateResp.response);
-        gameStateData=gameStateResp.response;
-        console.log("gsd", gameStateData);
-      }
-    }
-
-
-    // function plantState(){
-    //     let plant_state = User.plant_state;
-    //     $.get('/api/user-gamestate', (data) => 
-    //     {plant_state} );
-    // }
-
     function plantState(){
       $.get("/api/user-gamestate", (data) => {
        const plant_state = data["plant_state"]
@@ -80,75 +59,61 @@ function init() {
     }
     var plant_changed = plantState();
     
+    function potState(){
+        $.get("/api/user-gamestate", (data) => {
+        const pot_state = data["pot_state"]
+        face.src = pot_dict[pot_state]
+        });
+    }
+    var face_changed = potState();
 
     pot.src = "/static/images/potb.PNG";
-    // plant.src = "/static/images/leaf3.PNG";
-    //plant.src = plant_changed;
-    //face.src = "/static/images/face0.PNG";
-    face.src = dict[face_changed];
-
-    
-
-    var plant_result = plantResult(plant_changed, plant_dict);
+    plant.src = plant_changed;
+    face.src = face_changed;
 
     
 
   } else {
     //fallback content here
   }
-  function plantResult(value, dict){
-    //compare with the dictionary values
-    if(dict.some(e => e.dict[key1] == value)){
-        console.log('exists');
-        return dict[key1]
-    }
-}
 
 }
 
-
-
-// function plantState(){
-//     let plant_state = plant;
-//     $.get('/api/user-gamestate', (data) => 
-//     {plant_state} );
+// function activityListen(arr, face_state) {
+//     var actions_fulfilled = 0;
+//     //check if the element of the array equals the id of the activity - then apply its event listener, and update face variable
+//     for (var element of arr) {
+//         if (element == document.getElementById('breathing')){
+//           console.log("breathing element", actions_fulfilled);
+//             element.addEventListener('click', function() {
+//               actions_fulfilled += 1;
+//               breathingExercise();
+//               console.log("breathing event", actions_fulfilled);
+//           }, false);
+//         }
+//         else if (element == document.getElementById('journal')){
+//           console.log("journal element", actions_fulfilled);
+//             element.addEventListener('click', function() {
+//                 actions_fulfilled += 1;
+//                 journalExercise();
+//             }, false);
+//         }
+//         else if (element == document.getElementById('meditation')){
+//           console.log("med element", actions_fulfilled);
+//             element.addEventListener('click',  function() {
+//                 actions_fulfilled += 1; 
+//                 meditationExercise();
+//             });
+//         }
+//         else{
+//             console.log("element is the wrong image");
+//         }
+//         console.log("face state", face_state);
+//         face_state += actions_fulfilled;
+//     }
+//     face_state += 1;
+//     return face_state;
 // }
-
-function activityListen(arr, face_state) {
-    var actions_fulfilled = 0;
-    //check if the element of the array equals the id of the activity - then apply its event listener, and update face variable
-    for (var element of arr) {
-        if (element == document.getElementById('breathing')){
-          console.log("breathing element", actions_fulfilled);
-            element.addEventListener('click', function() {
-              actions_fulfilled += 1;
-              breathingExercise();
-              console.log("breathing event", actions_fulfilled);
-          }, false);
-        }
-        else if (element == document.getElementById('journal')){
-          console.log("journal element", actions_fulfilled);
-            element.addEventListener('click', function() {
-                actions_fulfilled += 1;
-                journalExercise();
-            }, false);
-        }
-        else if (element == document.getElementById('meditation')){
-          console.log("med element", actions_fulfilled);
-            element.addEventListener('click',  function() {
-                actions_fulfilled += 1; 
-                meditationExercise();
-            });
-        }
-        else{
-            console.log("element is the wrong image");
-        }
-        console.log("face state", face_state);
-        face_state += actions_fulfilled;
-    }
-    face_state += 1;
-    return face_state;
-}
  
 function loadListen(arr, ctx) {
   var loaded = 0;
