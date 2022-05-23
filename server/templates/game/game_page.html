@@ -6,63 +6,69 @@
         <canvas id="canvas" width="700" height="1200"></canvas>
         <div class="container-fluid" id="game-buttons">
             <div class="row">
-                {% if not current_user.mood_recorded %}
-                <button class="btn btn-primary center" id="mood-btn" data-toggle="modal" data-target="#mood-modal" onclick="moodTrack();">
-                    <h4>Check in</h4>
+                <!-- {% if not current_user.mood_recorded %} -->
+                <button class="btn btn-primary center" id="mood-btn" style="font-size:20px" data-toggle="modal" data-target="#mood-modal" onclick="moodTrack();">
+                    Check In
                 </button>
-                {% endif %}
-                {% if current_user.mood_recorded %}
+                <!-- {% endif %}
+                {% if current_user.mood_recorded %} -->
                 <div class="col-md-3"></div>
                 <div class="col-md-2">
-                    {% if not current_user.journal_recorded %}
+                    <!-- {% if not current_user.journal_recorded %} -->
                         <button class="btn btn-primary" id="journal" data-toggle="modal" data-target="#journal-modal" onclick="journalExercise();">
                             <img src="{{url_for('static',filename='/images/fertilizer-icon.PNG')}}"
-                                alt="Write in your journal!" width="75px" height="75px">
-                            <h4>Food</h4>
+                                alt="Write in your journal!" width="75" height="75">
+                            <br>
+                            Food
                         </button>
-                    {% endif %}
-                    {% if current_user.journal_recorded %}
+                    <!-- {% endif %}
+                    {% if current_user.journal_recorded %} -->
                         <button class="btn btn-primary" id="journal-blank" style="background-color:lightgray">
                             <img src="{{url_for('static',filename='/images/fertilizer-icon.PNG')}}"
-                                alt="Write in your journal!" width="75px" height="75px">
-                            <h4>Food</h4>
+                                alt="Write in your journal!" width="75" height="75">
+                            <br>
+                            Food
                         </button>
-                    {% endif %}
+                    <!-- {% endif %} -->
                 </div>
                 <div class="col-md-2">
-                    {% if not current_user.breathing_complete %}
+                    <!-- {% if not current_user.breathing_complete %} -->
                     <button class="btn btn-primary" id="breathing" data-toggle="modal" data-target="#breathing-modal" onclick="breathingExercise()">
                         <img src="{{url_for('static',filename='/images/watercan-icon.PNG')}}"
-                            alt="Do some breathing exercises!" width="75px" height="75px">
-                        <h4>Water</h4>
+                            alt="Do some breathing exercises!" width="75" height="75">
+                        <br>
+                        Water
                     </button>
-                    {% endif %}
-                    {% if current_user.breathing_complete %}
+                    <!-- {% endif %}
+                    {% if current_user.breathing_complete %} -->
                     <button class="btn btn-primary" id="breathing-blank" style="background-color:lightgray">
                         <img src="{{url_for('static',filename='/images/watercan-icon.PNG')}}"
-                            alt="Do some breathing exercises!" width="75px" height="75px">
-                        <h4>Water</h4>
+                            alt="Do some breathing exercises!" width="75" height="75">
+                        <br>
+                        Water
                     </button>
-                    {% endif %}
+                    <!-- {% endif %} -->
                 </div>
                 <div class="col-md-2">
-                    {% if not current_user.meditation_complete %}
+                    <!-- {% if not current_user.meditation_complete %} -->
                     <button class="btn btn-primary" id="meditation" data-toggle="modal" data-target="#meditation-modal" onclick="meditationExercise()">
                         <img src="{{url_for('static',filename='/images/sun-icon.PNG')}}"
-                            alt="Do a body scan meditation!" width="75px" height="75px">
-                        <h4>Sun</h4>
+                            alt="Do a body scan meditation!" width="75" height="75">
+                        <br>
+                        Sun
                     </button>
-                    {% endif %}
-                    {% if current_user.meditation_complete %}
+                    <!-- {% endif %}
+                    {% if current_user.meditation_complete %} -->
                     <button class="btn btn-primary" id="meditation-blank" style="background-color:lightgray">
                         <img src="{{url_for('static',filename='/images/sun-icon.PNG')}}"
-                            alt="Do a body scan meditation!" width="75px" height="75px">
-                        <h4>Sun</h4>
+                            alt="Do a body scan meditation!" width="75" height="75">
+                        <br>
+                        Sun
                     </button>
-                    {% endif %}
+                    <!-- {% endif %} -->
                 </div>
                 <div class="col-md-3"></div>
-                {% endif %}
+                <!-- {% endif %} -->
             </div>
         </div>
     </div>
@@ -73,12 +79,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="document.getElementById('mood-modal').style.display='none'"><span aria-hidden="
-                        true">&times;</span></button>
+                        onclick="document.getElementById('mood-modal').style.display='none'"><span aria-hidden="true">
+                            &times;</span></button>
                     <h3 class="modal-title">How do you feel today?</h3>
                 </div>
                 <div class="modal-body">
-                    <img src="{{url_for('static',filename='/images/mood-track-modal.PNG')}}" alt="Mood scale graphic" width="70%" height="70%" class="img-center">
+                    <img src="{{url_for('static',filename='/images/mood-track-modal.PNG')}}" alt="Mood scale graphic" class="img-center" style="width:70%;height:70%">
                     <br>
                     <div class="row">
                         <form id="mood">
@@ -88,7 +94,6 @@
                                 <input type="range" id="mood-entry" name="mood" min="1" max="5">
                                 <br>
                                 <input type="submit" id="mood-submit" class="btn btn-primary">
-                                </input>
                             </div>
                         </form>
                     </div>
@@ -104,21 +109,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="document.getElementById('breathing-modal').style.display='none'"><span aria-hidden="
-                        true">&times;</span></button>
+                        onclick="document.getElementById('breathing-modal').style.display='none'"><span aria-hidden="true">
+                            &times;</span></button>
                     <h3 class="modal-title">Mindfully breathe and water your plant!</h3>
                 </div>
                 <div class="modal-body">
                     <div style="width:80%;height:0;padding-bottom:80%;position:relative;"><iframe
-                            src="https://giphy.com/embed/1xVc4s9oZrDhO9BOYt" width="100%" height="100%"
-                            style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                            src="https://giphy.com/embed/1xVc4s9oZrDhO9BOYt" 
+                            style="position:absolute;border:None;width:100%;height:100%" class="giphy-embed" allowFullScreen></iframe>
                     </div>
                     <p><a
                             href="https://giphy.com/gifs/healthline-meditation-stress-relief-box-breathing-1xVc4s9oZrDhO9BOYt">via
                             GIPHY</a></p>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" id="finish-breathing" class="close" data-dismiss="modal" aria-label="Close"
+                    <button class="btn btn-primary close" id="finish-breathing" data-dismiss="modal" aria-label="Close"
                     onclick="document.getElementById('breathing-modal').style.display='none'">Finish</button>
                 </div>
             </div>
@@ -130,8 +135,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="document.getElementById('meditation-modal').style.display='none'"><span aria-hidden="
-                        true">&times;</span></button>
+                        onclick="document.getElementById('meditation-modal').style.display='none'"><span aria-hidden="true">
+                            &times;</span></button>
                     <h3 class="modal-title">Let some light in!</h3>
                 </div>
                 <div class="modal-body">
@@ -143,7 +148,7 @@
                         are feeling.</p>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" id="finish-meditation" class="close" data-dismiss="modal" aria-label="Close"
+                    <button class="btn btn-primary close" id="finish-meditation" data-dismiss="modal" aria-label="Close"
                     onclick="document.getElementById('meditation-modal').style.display='none'">Finish</button>
                 </div>
             </div>
@@ -155,8 +160,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="document.getElementById('journal-modal').style.display='none'"><span aria-hidden="
-                        true">&times;</span></button>
+                        onclick="document.getElementById('journal-modal').style.display='none'"><span aria-hidden="true">
+                            &times;</span></button>
                     <h3 class="modal-title">Write in your journal and feed your plant!</h3>
                 </div>
                 <div class="modal-body">
@@ -176,7 +181,7 @@
             </div>
         </div>
     </div>
-</body>
 <script src="{{url_for('static',filename='/scripts/gameScript.js')}}">
 </script>
+</body>
 {% endblock %}
