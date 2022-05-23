@@ -1,5 +1,4 @@
 # Gro 🌱
-
 Welcome to Gro, your friendly habit building and self-care guide. 😌
 
 It can take 3 weeks to start building a habit. 📅
@@ -13,14 +12,11 @@ Look after your plant to look after yourself! 🧘🏻‍♂️
 Gro is here for you. Start your self care journey today! ✨
 
 ---
-
 ## Purpose
 
 
 ---
-
 ## Architecture
-
 This front-end of the website is built using HTML, JS and CSS, with the use of libraries including Bootstrap, Ajax and Jquery. The back-end of the website uses the python flask library.
 
 Though unconventional practice in the software world today, the team decided to use a server side rendering architecture to simplify the authentication process and setting up a webserver to serve static frontend files. It also simplifies page routing and rendering and allows us to start the entire app with a single command.
@@ -30,9 +26,7 @@ Though unconventional practice in the software world today, the team decided to 
 
 
 ## Setting up environment
-
 Run:
-
 ```
 pip install -r requirements.txt
 ```
@@ -40,21 +34,17 @@ pip install -r requirements.txt
 ---
 
 ## Add environment variables
-
 Create a copy of .env-template and rename to .env
 
 ---
 
 ## DB setup
-
 Create DB file (set to gro.db), run:
 
 ```
 flask db migrate
 ```
-
 Apply migrations, run:
-
 ```
 flask db upgrade
 ```
@@ -62,7 +52,6 @@ flask db upgrade
 ---
 
 ## Start server
-
 Run:
 ``` 
 flask run
@@ -79,7 +68,6 @@ Only the admin user has access to the admin portal. Game will not be ready for u
 ---
 
 ## Testing
-
 To test the application, run:
 ```
 -
