@@ -57,17 +57,18 @@ function init() {
     pageLoaded = loadListen(imgArr, ctx);
 
     pot.src = "/static/images/potb.png";
-    plant.src = "/static/images/leaf1.png";
+    //plant.src = "/static/images/leaf1.png";
+    plant.src = plant_result;
     mood.src = "/static/images/mood-track.png";
-    face.src = "/static/images/face0.png";
-    //face.src = dict[face_changed];
+    //face.src = "/static/images/face0.png";
+    face.src = dict[face_changed];
     } else {
         //fallback content here
     }
 
     //example case for functions
     if(pageLoaded) {
-       const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, dict[face_changed], ctx);}, 500);
+       const myTimeout1 = setTimeout(function() {changeImage(imgArr, 2, face.src, ctx);}, 500);
        const myTimeout2 = setTimeout(function() {removeImage(imgArr, 3, ctx);}, 1000);
      }
 
