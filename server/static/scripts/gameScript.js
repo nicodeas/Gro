@@ -127,7 +127,8 @@ function meditationExercise() {
 
 function journalPrompt() {
   var prompt;
-  $.get("/api/journal", function (data) {
+  $.get("/api/get-prompt", function (data) {
+    console.log(data);
     prompt = data;
     document.getElementById("journal-prompt").innerHTML =
       "<h3>" + prompt + "</h3>";
