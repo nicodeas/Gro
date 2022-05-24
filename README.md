@@ -12,10 +12,6 @@ Look after your plant to look after yourself! 🧘🏻‍♂️
 Gro is here for you. Start your self care journey today! ✨
 
 ---
-## Purpose
-
-
----
 ## Architecture
 This front-end of the website is built using HTML, JS and CSS, with the use of libraries including Bootstrap, Ajax and Jquery. The back-end of the website uses the python flask library.
 
