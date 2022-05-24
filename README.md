@@ -64,11 +64,31 @@ Only the admin user has access to the admin portal. Game will not be ready for u
 ---
 
 ## Testing
-To test the application, run:
+
+To test the application:
+
+### Back-end tests
+
+Run
 ```
--
+python -m tests.tests
 ```
 
+### Front-end tests
+Note: In-memory DB not working, please refer to the testing manual in tests/testing_manual
 
+Replace 
+```
+app.config.from_object(Config)
+```
+with 
+```
+app.config.from_object(confing.TestingConfig)
+```
+and then start up the app and run:
+```
+python -m tests.selenium_tests
+```
+---
 ## Notes
 The game page images are off-center due to the game art itself and not css alignment
