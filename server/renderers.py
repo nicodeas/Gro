@@ -37,12 +37,6 @@ def admin():
         return redirect(url_for('index'))
     return render_template('admin/admin.html')
 
-# dummy activity page
-@app.route('/activity')
-def activity():
-    if not current_user.is_authenticated:
-        return redirect(url_for('user_login'))
-    return render_template('game/activity.html')
 
 @app.route('/meditation')
 def meditation():
