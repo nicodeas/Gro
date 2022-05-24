@@ -6,69 +6,69 @@
         <canvas id="canvas" width="700" height="1200"></canvas>
         <div class="container-fluid" id="game-buttons">
             <div class="row">
-                <!-- {% if not current_user.mood_recorded %} -->
+                {% if not current_user.mood_recorded %}
                 <button class="btn btn-primary center" id="mood-btn" style="font-size:20px" data-toggle="modal" data-target="#mood-modal" onclick="moodTrack();">
                     Check In
                 </button>
-                <!-- {% endif %}
-                {% if current_user.mood_recorded %} -->
+                {% endif %}
+                {% if current_user.mood_recorded %}
                 <div class="col-md-3"></div>
                 <div class="col-md-2">
-                    <!-- {% if not current_user.journal_recorded %} -->
+                    {% if not current_user.journal_recorded %}
                         <button class="btn btn-primary" id="journal" data-toggle="modal" data-target="#journal-modal" onclick="journalExercise();">
                             <img src="{{url_for('static',filename='/images/fertilizer-icon.PNG')}}"
                                 alt="Write in your journal!" width="75" height="75">
                             <br>
                             Food
                         </button>
-                    <!-- {% endif %}
-                    {% if current_user.journal_recorded %} -->
+                    {% endif %}
+                    {% if current_user.journal_recorded %}
                         <button class="btn btn-primary" id="journal-blank" style="background-color:lightgray">
                             <img src="{{url_for('static',filename='/images/fertilizer-icon.PNG')}}"
                                 alt="Write in your journal!" width="75" height="75">
                             <br>
                             Food
                         </button>
-                    <!-- {% endif %} -->
+                    {% endif %}
                 </div>
                 <div class="col-md-2">
-                    <!-- {% if not current_user.breathing_complete %} -->
+                    {% if not current_user.breathing_complete %}
                     <button class="btn btn-primary" id="breathing" data-toggle="modal" data-target="#breathing-modal" onclick="breathingExercise()">
                         <img src="{{url_for('static',filename='/images/watercan-icon.PNG')}}"
                             alt="Do some breathing exercises!" width="75" height="75">
                         <br>
                         Water
                     </button>
-                    <!-- {% endif %}
-                    {% if current_user.breathing_complete %} -->
+                    {% endif %}
+                    {% if current_user.breathing_complete %}
                     <button class="btn btn-primary" id="breathing-blank" style="background-color:lightgray">
                         <img src="{{url_for('static',filename='/images/watercan-icon.PNG')}}"
                             alt="Do some breathing exercises!" width="75" height="75">
                         <br>
                         Water
                     </button>
-                    <!-- {% endif %} -->
+                    {% endif %}
                 </div>
                 <div class="col-md-2">
-                    <!-- {% if not current_user.meditation_complete %} -->
+                    {% if not current_user.meditation_complete %}
                     <button class="btn btn-primary" id="meditation" data-toggle="modal" data-target="#meditation-modal" onclick="meditationExercise()">
                         <img src="{{url_for('static',filename='/images/sun-icon.PNG')}}"
                             alt="Do a body scan meditation!" width="75" height="75">
                         <br>
                         Sun
                     </button>
-                    <!-- {% endif %}
-                    {% if current_user.meditation_complete %} -->
+                    {% endif %}
+                    {% if current_user.meditation_complete %}
                     <button class="btn btn-primary" id="meditation-blank" style="background-color:lightgray">
                         <img src="{{url_for('static',filename='/images/sun-icon.PNG')}}"
                             alt="Do a body scan meditation!" width="75" height="75">
                         <br>
                         Sun
                     </button>
-                    <!-- {% endif %} -->
+                    {% endif %}
                 </div>
                 <div class="col-md-3"></div>
-                <!-- {% endif %} -->
+                {% endif %}
             </div>
         </div>
     </div>

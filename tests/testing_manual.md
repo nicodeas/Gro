@@ -12,7 +12,7 @@
 
 3. Login with the admin account
 
-- Ensure that the Account, Journal, Game, Activity, Admin and Logout buttons are now present
+- Ensure that the Game, Activity, Admin and Logout buttons are now present
 
 - Perform the daily tasks for the game and check the activity and journal pages for the updated content
 
@@ -32,16 +32,16 @@
     - Password: test-pass
 
 
-- After that, check that you are on the index page, with the Account, Journal, Game, Activity and Logout 
+- After that, check that you are on the index page, with the Game, Activity and Logout 
 buttons visible on the navigation bar
 
 7. Play the game again
 
-- Check that the Journal and Activity pages correctly load and present the information from the latest 
-game session
+- Check that the Activity page correctly loads and present the information from the latest game session
 
 8. Logout from the test user
 
 9. Run the python file within this directory
-
-- python3 -m tests.test_cleanup
+```
+python3 -m tests.test_cleanup
+```

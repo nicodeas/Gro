@@ -29,8 +29,8 @@ class TestMainPageTest(unittest.TestCase):
         # Test that the game link is not present if logged out
         with self.assertRaises(NoSuchElementException):
             self.driver.find_element(By.LINK_TEXT, "Game")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(4)").click()
-        self.driver.find_element(By.ID, "username-input").click()
+        login = self.driver.find_element(By.CSS_SELECTOR, ".glyphicon-log-in")
+        login.click()
         self.driver.find_element(By.ID, "username-input").send_keys("test-uname")
         self.driver.find_element(By.ID, "password-input").send_keys("test-pass")
         self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
@@ -46,8 +46,8 @@ class TestMainPageTest(unittest.TestCase):
         # Test that the game link is not present if logged out
         with self.assertRaises(NoSuchElementException):
             self.driver.find_element(By.LINK_TEXT, "Game")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(4)").click()
-        self.driver.find_element(By.ID, "first-name-input").click()
+        signup = self.driver.find_element(By.CSS_SELECTOR, "li:nth-child(4) > .btn")
+        signup.click()
         self.driver.find_element(By.ID, "first-name-input").send_keys("new_test_first")
         self.driver.find_element(By.ID, "last-name-input").send_keys("new_test_last")
         self.driver.find_element(By.ID, "username-input").send_keys("new_test_user")
